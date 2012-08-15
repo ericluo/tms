@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 gem 'rails', '3.2.8'
 gem 'sqlite3'
 group :assets do
@@ -6,6 +6,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'pry', :group => :development
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1", :group => [:development, :test]
 gem "thin", ">= 1.4.1", :group => :production
