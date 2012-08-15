@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Tms::Application.config.secret_token = '6fba03d5b1bc71484700aa96cc5cdadb6bf484b57c03693d962e624c07e603d209567afa9d9cd30ebc04884b0eb3088f96b831323d3cbf3670763f686b407108'
+Tms::Application.config.secret_token = '04e8bbadc165808c78650b4315ff8f0acea929a690ef8f3dc960aad1c21d4a886fec21b32429525939e4d7dc26a0c9652944068188d71dd5084721934afb85c2'
