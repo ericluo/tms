@@ -1,4 +1,6 @@
 Tms::Application.routes.draw do
+  resources :departments
+
   authenticated :user do
     root :to => 'home#index'
   end

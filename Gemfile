@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 gem 'rails', '3.2.8'
 gem 'sqlite3'
 group :assets do
@@ -25,3 +25,5 @@ gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "simple_form"
 gem "therubyracer", :group => :assets, :platform => :ruby
+
+gem "pry", :group => :development
