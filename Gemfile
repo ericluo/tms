@@ -6,7 +6,13 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-gem 'pry', :group => :development
+group :development do
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-remote'
+  gem 'pry-nav'
+end
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1", :group => [:development, :test]
 gem "thin", ">= 1.4.1", :group => :production
