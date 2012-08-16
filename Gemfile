@@ -6,6 +6,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'pry', :group => :development
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1", :group => [:development, :test]
 gem "thin", ">= 1.4.1", :group => :production
@@ -25,5 +26,3 @@ gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "simple_form"
 gem "therubyracer", :group => :assets, :platform => :ruby
-
-gem "pry", :group => :development
