@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  attr_accessible :rank, :role
+  attr_accessible :rank, :role, :department_id
   
   belongs_to :department
+  # accepts_nested_attributes_for :department
 end
