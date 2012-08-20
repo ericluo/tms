@@ -1,0 +1,7 @@
+* 用户管理
+
+一个处级部门(department)有多个员工(employee)，一个员工可能参加多个培训(training)。存在不同的培训类别(category)，对应于不同的学分(score)。
+
+用户信息包括姓名(name)，账号(account)，密码(password)，级别(rank)。
+
+用户可能具备多种角色，如(admin,assessor等)。

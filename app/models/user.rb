@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
   rolify
   # Include default devise modules. Others available are:
@@ -6,7 +7,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  RANKS = %w[处长 正处级 副处长 副处级 科及科以下]
+  ROLES = %w[系统管理员 审核员]
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :rank, :role
   
+  belongs_to :department
 end

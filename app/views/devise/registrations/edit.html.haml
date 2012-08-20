@@ -1,31 +1,35 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+%h2 个人信息设置
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
-  %p
-    = f.label :name
-    %br/
-    = f.text_field :name
   %div
-    = f.label :email
-    %br/
+    = f.label "姓名"
+    = f.text_field :name
+  %div 
+    = f.label "部门"
+    = f.collection_select :department, Department.all, :id, :name, :selected => resource.department_id
+  %div
+    = f.label "账号"
     = f.email_field :email
   %div
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
+    = f.label "新密码"
+    %i (如不修改密码，请留空)
+    %br
     = f.password_field :password, :autocomplete => "off"
   %div
-    = f.label :password_confirmation
-    %br/
+    = f.label "新密码确认"
     = f.password_field :password_confirmation
   %div
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
+    = f.label "原密码"
+    %i (请输入原密码确认变更)
+    %br
     = f.password_field :current_password
-  %div= f.submit "Update"
-%h3 Cancel my account
+  %div
+    = f.label "职务"
+    = f.collection_select :rank, User::RANKS.to_pair_with_index, :second, :first
+  %div
+    = f.label "角色"
+    = f.collection_select :role, User::ROLES.to_pair_with_index, :second, :first
+  %div= f.submit "确定"
 %p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-= link_to "Back", :back
+  = link_to "注销", registration_path(resource_name), :data => {:confirm => "确定吗?"}, :method => :delete
+  = link_to "返回", :back
