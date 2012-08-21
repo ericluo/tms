@@ -1,9 +1,9 @@
-%h1 Listing departments
+%h1 部门列表
 
-%table
+%table.table.table-striped
   %tr
-    %th Name
-    %th Order
+    %th 部门名称
+    %th 排列次序
     %th
     %th
     %th
@@ -12,10 +12,10 @@
     %tr
       %td= department.name
       %td= department.order
-      %td= link_to 'Show', department
-      %td= link_to 'Edit', edit_department_path(department)
-      %td= link_to 'Destroy', department, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to '查看', department
+      %td= link_to '编辑', edit_department_path(department)
+      %td= link_to '删除', department, :confirm => '确定删除吗？', :method => :delete
 
 %br
 
-= link_to 'New Department', new_department_path
+= link_to '新增部门', new_department_path

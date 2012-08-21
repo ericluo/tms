@@ -1,6 +1,15 @@
-%h3 Users
-%ul.users
+%h1 用户列表
+
+%table.table.table-striped
+  %tr
+    %th 姓名
+    %th 部门
+    %th 职务
+    %th 账号
+
   - @users.each do |user|
-    %li
-      = link_to user.name, user
-      signed up #{user.created_at.to_date}
+    %tr
+      %td= link_to user.name, user
+      %td= user.department.name
+      %td= user.position_title
+      %td= user.email

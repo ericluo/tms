@@ -1,5 +1,6 @@
 class Department < ActiveRecord::Base
+  has_many :users
+
   attr_accessible :name, :order
 
-  has_many :users
 end

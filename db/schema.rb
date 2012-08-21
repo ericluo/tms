@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120820152558) do
     t.datetime "updated_at",                             :null => false
     t.string   "name"
     t.integer  "role"
-    t.integer  "rank"
+    t.integer  "position"
     t.integer  "department_id"
   end
 

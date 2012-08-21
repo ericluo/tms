@@ -5,3 +5,16 @@
 用户信息包括姓名(name)，账号(account)，密码(password)，级别(rank)。
 
 用户可能具备多种角色，如(admin,assessor等)。
+
+
+* 培训管理
+[2012-08-21 二 16:46]
+
+培训具有下述字段
+
+- train_category
+- start_date
+- end_date
+- duration
+- organizer
+- score

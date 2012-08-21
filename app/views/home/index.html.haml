@@ -1,4 +1,15 @@
-%h3 欢迎使用学分管理系统
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+%h1 用户列表
+
+%table.table.table-striped
+  %tr
+    %th 姓名
+    %th 部门
+    %th 职务
+    %th 账号
+
+  - @users.each do |user|
+    %tr
+      %td= link_to user.name, user
+      %td= user.department.name
+      %td= user.position_title
+      %td= user.email

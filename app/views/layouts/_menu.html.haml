@@ -3,11 +3,12 @@
     = link_to "培训登记"
   %li
     = link_to "修改密码"
-  %li.nav-header 系统管理    
-  %li
-    = link_to "统计分析"
-  %li
-    = link_to "用户管理"
-  %li
-    = link_to "参数维护"
+  - if can? :manage, :all  
+    %li.nav-header 系统管理    
+    %li
+      = link_to "用户管理", users_path
+    %li
+      = link_to "部门维护", departments_path
+    %li
+      = link_to "统计分析"
     

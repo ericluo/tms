@@ -25,7 +25,7 @@
     = f.password_field :current_password
   %div
     = f.label "职务"
-    = f.collection_select :rank, User::RANKS.to_pair_with_index, :second, :first, :selected => resource.rank
+    = f.collection_select :position, User::POSITION.to_pair_with_index, :second, :first, :selected => resource.position
   %div
     = f.label "角色"
     = f.collection_select :role, User::ROLES.to_pair_with_index, :second, :first, :selected => resource.role
