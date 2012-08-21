@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :department
-  # accepts_nested_attributes_for :department
+  has_many   :trains
+
   before_create :set_default_role
 
   POSITION = %w[处长 正处级 副处长 副处级 科及科以下]

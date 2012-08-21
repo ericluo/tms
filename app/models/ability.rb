@@ -7,6 +7,7 @@ class Ability
     if user.admin?
       can :manage, :all
     else
+      can :manage, Train, trainee_id: user.id
     end
     # Define abilities for the passed in user here. For example:
     #

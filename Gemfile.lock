@@ -1,6 +1,7 @@
 GEM
   remote: http://ruby.taobao.org/
   specs:
+    RedCloth (4.2.9)
     actionmailer (3.2.8)
       actionpack (= 3.2.8)
       mail (~> 2.4.4)
@@ -210,6 +211,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  RedCloth
   bootstrap-sass (>= 2.0.4.0)
   cancan (>= 1.6.8)
   capybara (>= 1.1.2)

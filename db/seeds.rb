@@ -22,3 +22,6 @@ user2 = User.create!(:name => '张三', :email => 'user1@example.com',
                     :password => 'please', :password_confirmation => 'please',
                     :department_id => 5, :position => 1, :role => 2)
 puts 'New user created: ' << user2.name
+
+puts "SETTING UP DEFAULT TRAIN CATEGORY"
+[["视频培训", 5],["现场培训", 10]].each {|n, w| TrainCategory.create!(name: n, weight: w)}

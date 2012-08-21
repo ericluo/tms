@@ -7,14 +7,20 @@
 用户可能具备多种角色，如(admin,assessor等)。
 
 
-* 培训管理
+* COMMENT 培训管理
 [2012-08-21 二 16:46]
 
 培训具有下述字段
 
-- train_category
+- category_id
 - start_date
 - end_date
 - duration
 - organizer
 - score
+- user_id
+
+培训类别
+
+- name
+- weight

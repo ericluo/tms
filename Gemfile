@@ -12,6 +12,8 @@ group :development do
   gem 'pry-doc'
   gem 'pry-remote'
   gem 'pry-nav'
+
+  gem 'RedCloth'kk
 end
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1", :group => [:development, :test]

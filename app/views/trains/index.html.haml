@@ -1,0 +1,29 @@
+%h1 Listing trains
+
+%table.table
+  %tr
+    %th Start date
+    %th End date
+    %th Duration
+    %th Organizer
+    %th Category
+    %th User
+    %th
+    %th
+    %th
+
+  - @trains.each do |train|
+    %tr
+      %td= train.start_date
+      %td= train.end_date
+      %td= train.duration
+      %td= train.organizer
+      %td= train.category.name
+      %td= train.trainee.name
+      %td= link_to 'Show', train
+      %td= link_to 'Edit', edit_train_path(train)
+      %td= link_to 'Destroy', train, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Train', new_train_path

@@ -1,0 +1,21 @@
+%h1 Listing train_categories
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Weight
+    %th
+    %th
+    %th
+
+  - @train_categories.each do |train_category|
+    %tr
+      %td= train_category.name
+      %td= train_category.weight
+      %td= link_to 'Show', train_category
+      %td= link_to 'Edit', edit_train_category_path(train_category)
+      %td= link_to 'Destroy', train_category, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Train category', new_train_category_path
