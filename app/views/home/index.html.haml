@@ -1,15 +1,1 @@
-%h1 用户列表
-
-%table.table.table-striped
-  %tr
-    %th 姓名
-    %th 部门
-    %th 职务
-    %th 账号
-
-  - @users.each do |user|
-    %tr
-      %td= link_to user.name, user
-      %td= user.department.name
-      %td= user.position_title
-      %td= user.email
+%h1.center 欢迎使用湖北银监局学分管理系统，请先登录！

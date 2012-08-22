@@ -15,12 +15,14 @@ DEPS.each_with_index {|d, i| Department.create!(name: d, order: i)}
 puts 'SETTING UP DEFAULT USER LOGIN'
 user = User.create!(:name => '罗文波', :email => 'user@example.com',
                     :password => 'please', :password_confirmation => 'please',
-                    :department_id => 2, :position => 4, :role => 1)
+                    :department_id => 2, :position => 4)
 puts 'New user created: ' << user.name
+
+user.add_role "admin"
 
 user2 = User.create!(:name => '张三', :email => 'user1@example.com',
                     :password => 'please', :password_confirmation => 'please',
-                    :department_id => 5, :position => 1, :role => 2)
+                    :department_id => 5, :position => 1)
 puts 'New user created: ' << user2.name
 
 puts "SETTING UP DEFAULT TRAIN CATEGORY"

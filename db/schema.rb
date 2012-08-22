@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20120821104532) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
-    t.integer  "role"
     t.integer  "position"
     t.integer  "department_id"
   end

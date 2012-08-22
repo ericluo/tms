@@ -1,12 +1,16 @@
 %ul.nav.nav-tabs.nav-stacked
-  %li.nav-header 学分管理
+  %li.nav-header 培训管理
   %li.active
     = link_to "培训登记", new_train_path
   %li
-    = link_to "历史记录", trains_path  
-  %li
-    = link_to "修改密码"
-  - if can? :manage, :all  
+    = link_to "培训记录", trains_path  
+  %li.nav-header 职称学位
+  %li= link_to "职称登记"
+  %li.nav-header 网络学习
+  %li= link_to "视频会议"
+
+- if can? :manage, :all  
+  %ul.nav.nav-tabs.nav-stacked
     %li.nav-header 系统管理    
     %li
       = link_to "用户管理", users_path
