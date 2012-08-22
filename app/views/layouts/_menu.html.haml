@@ -1,13 +1,11 @@
 %ul.nav.nav-tabs.nav-stacked
   %li.nav-header 培训管理
   %li.active
-    = link_to "培训登记", new_train_path
-  %li
-    = link_to "培训记录", trains_path  
-  %li.nav-header 职称学位
-  %li= link_to "职称登记"
-  %li.nav-header 网络学习
-  %li= link_to "视频会议"
+    = link_to "脱产培训", new_train_path
+  %li= link_to "培训记录", trains_path  
+  %li= link_to "讲座培训"
+  %li= link_to "在岗培训"
+  %li= link_to "再培训"
 
 - if can? :manage, :all  
   %ul.nav.nav-tabs.nav-stacked
