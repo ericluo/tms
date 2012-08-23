@@ -7,26 +7,37 @@
 用户可能具备多种角色，如(admin,assessor等)。
 
 
-* COMMENT 培训管理
+* 培训管理
 [2012-08-21 二 16:46]
 
-培训具有下述字段
+** Train培训具有下述字段
 
-- category_id
+- trainee 培训学员
+- name 培训项目/名称
 - start_date
 - end_date
-- duration
-- name
-- organizer
-- score
-- user_id
+- type 不同培训类别通过不同的 =subclass= 来标识
+- score 学分，动态计算与最终确认相结合
+- certificate 证明材料(暂不实现)
+- comment 备注信息
+- registrar 登记人员 
 
-培训类别
+* 培训类别
 
-- OffJobTrain
-- LectureTrain
-- InJobTrain
-- ReTrain
+** OffJobTrain
+
+- period duration 学时
+- organizer 举办单位
+
+** LectureTrain
+
+
+** InJobTrain
+
+- category
+- level
+
+** ReTrain
 
 计分规则 Scoring Rule
   

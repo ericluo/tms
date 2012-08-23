@@ -16,7 +16,7 @@
       %nav.navbar-inner
         .container-fluid
           = render 'layouts/navigation'
-    #main{:role => "main"}
+    #main{role: "main", class: "#{controller.controller_name}" }
       .container
         .row
           #menu.span3
