@@ -24,7 +24,16 @@ en:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
 
+zh:
+  simple_form:
     labels:
       train:
         new:
-          category: 培训类别
+          category   : 培训类别
+          trainee    : 参训人员
+          name       : 培训项目
+          start_date : 开始时间
+          end_date   : 结束时间
+          period     : 学时
+          organizer  : 举办单位
+          comment    : 备注
