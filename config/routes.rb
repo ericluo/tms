@@ -1,6 +1,4 @@
 Tms::Application.routes.draw do
-  resources :train_categories
-
   resources :trains
 
   resources :departments

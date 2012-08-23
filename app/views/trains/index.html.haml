@@ -1,25 +1,35 @@
 %h1 Listing trains
 
-%table.table
+%table
   %tr
+    %th Name
+    %th Trainee
     %th Start date
     %th End date
-    %th Duration
+    %th Type
+    %th Score
+    %th Certificate
+    %th Comment
+    %th Registrar
+    %th Period
     %th Organizer
-    %th Category
-    %th User
     %th
     %th
     %th
 
   - @trains.each do |train|
     %tr
+      %td= train.name
+      %td= train.trainee_id
       %td= train.start_date
       %td= train.end_date
-      %td= train.duration
+      %td= train.type
+      %td= train.score
+      %td= train.certificate
+      %td= train.comment
+      %td= train.registrar_id
+      %td= train.period
       %td= train.organizer
-      %td= train.category.name
-      %td= train.trainee.name
       %td= link_to 'Show', train
       %td= link_to 'Edit', edit_train_path(train)
       %td= link_to 'Destroy', train, :confirm => 'Are you sure?', :method => :delete

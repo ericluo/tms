@@ -2,15 +2,14 @@
   = f.error_notification
 
   .form-inputs
-    %p
-      = f.label "培训类别"
-      = f.collection_select :category_id, TrainCategory.all, :id, :name
-    = f.label "开始时间"
-    = f.text_field :start_date, class: "datepicker", value: "#{Date.today}", readonly: true
-    = f.label "结束时间"
-    = f.text_field :end_date, class: "datepicker", value: "#{Date.today}", readonly: true
-    = f.input :duration
+    = f.association :category
+    = f.association :trainee, include_blank: false
+    = f.input :name
+    = f.input :start_date, as: :string
+    = f.input :end_date, as: :string
+    = f.input :period
     = f.input :organizer
+    = f.input :comment, input_html: {class: "span4", rows: 6}
 
   .form-actions
     = f.button :submit

@@ -2,11 +2,16 @@
 
 FactoryGirl.define do
   factory :train do
-    start_date "2012-08-21"
-    end_date "2012-08-21"
-    duration 1.5
+    name "MyString"
+    trainee_id 1
+    start_date "2012-08-23"
+    end_date "2012-08-23"
+    type ""
+    score 1.5
+    certificate "MyString"
+    comment "MyText"
+    registrar_id 1
+    period 1.5
     organizer "MyString"
-    category_id 1
-    user_id 1
   end
 end

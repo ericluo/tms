@@ -1,12 +1,17 @@
 class CreateTrains < ActiveRecord::Migration
   def change
     create_table :trains do |t|
+      t.string :name
+      t.references :trainee
+      t.references :category
+      t.references :registrar
       t.date :start_date
       t.date :end_date
-      t.float :duration
+      t.float :score
+      t.string :certificate
+      t.text :comment
+      t.float :period
       t.string :organizer
-      t.integer :category_id
-      t.integer :trainee_id
 
       t.timestamps
     end

@@ -26,4 +26,8 @@ user2 = User.create!(:name => '张三', :email => 'user1@example.com',
 puts 'New user created: ' << user2.name
 
 puts "SETTING UP DEFAULT TRAIN CATEGORY"
-[["视频培训", 5],["现场培训", 10]].each {|n, w| TrainCategory.create!(name: n, weight: w)}
+
+[["脱产培训", "OffJobTrainRule"],["讲座培训", "LectureTrainRule"]].each do |n, r|
+  Category.create!(name: n, rule: r)
+end
+

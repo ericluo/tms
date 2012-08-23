@@ -1,11 +1,8 @@
 class TrainsController < ApplicationController
-  before_filter :authenticate_user!
-  load_and_authorize_resource
-  
   # GET /trains
   # GET /trains.json
   def index
-    # @trains = Train.where(trainee_id: current_user.id)
+    @trains = Train.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +25,6 @@ class TrainsController < ApplicationController
   # GET /trains/new.json
   def new
     @train = Train.new
-    @train.trainee = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,8 +41,8 @@ class TrainsController < ApplicationController
   # POST /trains.json
   def create
     @train = Train.new(params[:train])
-    @train.trainee = current_user
-    
+    @train.registrar = current_user
+
     respond_to do |format|
       if @train.save
         format.html { redirect_to @train, notice: 'Train was successfully created.' }
@@ -62,6 +58,7 @@ class TrainsController < ApplicationController
   # PUT /trains/1.json
   def update
     @train = Train.find(params[:id])
+
     respond_to do |format|
       if @train.update_attributes(params[:train])
         format.html { redirect_to @train, notice: 'Train was successfully updated.' }

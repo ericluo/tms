@@ -1,23 +1,38 @@
 %p#notice= notice
 
 %p
+  %b Type:
+  = @train.category.name
+%p
+  %b Name:
+  = @train.name
+%p
+  %b Trainee:
+  = @train.trainee.name
+%p
   %b Start date:
   = @train.start_date
 %p
   %b End date:
   = @train.end_date
 %p
-  %b Duration:
-  = @train.duration
+  %b Score:
+  = @train.score
+%p
+  %b Certificate:
+  = @train.certificate
+%p
+  %b Comment:
+  = @train.comment
+%p
+  %b Registrar:
+  = @train.registrar.name
+%p
+  %b Period:
+  = @train.period
 %p
   %b Organizer:
   = @train.organizer
-%p
-  %b Category:
-  = @train.category_id
-%p
-  %b User:
-  = @train.trainee.name
 
 = link_to 'Edit', edit_train_path(@train)
 \|
