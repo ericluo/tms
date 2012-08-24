@@ -27,6 +27,15 @@ en:
 zh:
   simple_form:
     labels:
+      user:
+        new:
+          name                  : 姓名
+          department            : 部门
+          email                 : 账号
+          password              : 密码
+          password_confirmation : 重复密码
+          position              : 职务
+          submit                : 确定
       train:
         new:
           category   : 培训类别

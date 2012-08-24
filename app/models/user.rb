@@ -9,15 +9,10 @@ class User < ActiveRecord::Base
 
   belongs_to :department
   has_many   :trains
-
-  POSITION = %w[处长 正处级 副处长 副处级 科及科以下]
+  has_one    :position
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  attr_accessible :position, :department_id
+  attr_accessible :position_id, :department_id
   
-  def position_title
-    POSITION[position]
-  end
-
 end

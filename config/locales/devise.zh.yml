@@ -2,7 +2,7 @@
 # by HungYuhei (https://github.com/HungYuHei)
 # forked from https://gist.github.com/1319590
 
-zh-CN:
+zh:
   errors:
     messages:
       expired: "您已过期，请重新申请"
