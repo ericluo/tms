@@ -9,7 +9,6 @@
     %th Type
     %th Score
     %th Certificate
-    %th Comment
     %th Registrar
     %th Period
     %th Organizer
@@ -20,13 +19,12 @@
   - @trains.each do |train|
     %tr
       %td= train.name
-      %td= train.trainee_id
+      %td= train.trainee.name
       %td= train.start_date
       %td= train.end_date
-      %td= train.type
+      %td= train.category.name
       %td= train.score
       %td= train.certificate
-      %td= train.comment
       %td= train.registrar_id
       %td= train.period
       %td= train.organizer

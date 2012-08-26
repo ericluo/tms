@@ -1,19 +1,19 @@
 %p#notice= notice
 
 %p
-  %b Type:
+  %b 培训类别:
   = @train.category.name
 %p
-  %b Name:
+  %b= t :train_name
   = @train.name
 %p
-  %b Trainee:
+  %b= t :train_trainee
   = @train.trainee.name
 %p
-  %b Start date:
+  %b 开始日期:
   = @train.start_date
 %p
-  %b End date:
+  %b 结束日期:
   = @train.end_date
 %p
   %b Score:
