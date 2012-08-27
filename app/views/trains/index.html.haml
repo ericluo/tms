@@ -1,17 +1,16 @@
 %h1 Listing trains
 
-%table
+%table.table.table-striped
   %tr
-    %th Name
-    %th Trainee
-    %th Start date
-    %th End date
-    %th Type
-    %th Score
-    %th Certificate
-    %th Registrar
-    %th Period
-    %th Organizer
+    %th 项目名称
+    %th 培训类型
+    %th 举办单位
+    %th 受训人员
+    %th 开始日期
+    %th 结束日期
+    %th 学时
+    %th 学分
+    %th 录入人
     %th
     %th
     %th
@@ -19,15 +18,14 @@
   - @trains.each do |train|
     %tr
       %td= train.name
+      %td= train.category
+      %td= train.organizer
       %td= train.trainee.name
       %td= train.start_date
       %td= train.end_date
-      %td= train.category.name
       %td= train.score
-      %td= train.certificate
-      %td= train.registrar_id
       %td= train.period
-      %td= train.organizer
+      %td= train.registrar.name
       %td= link_to 'Show', train
       %td= link_to 'Edit', edit_train_path(train)
       %td= link_to 'Destroy', train, :confirm => 'Are you sure?', :method => :delete

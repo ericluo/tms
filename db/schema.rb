@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20120824015036) do
 
   create_table "trains", :force => true do |t|
     t.string   "name"
+    t.string   "category"
     t.integer  "trainee_id"
-    t.integer  "category_id"
     t.integer  "registrar_id"
     t.date     "start_date"
     t.date     "end_date"

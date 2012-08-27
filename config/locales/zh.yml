@@ -206,10 +206,14 @@ zh:
   train_trainee  : 受训人员
   helpers:
     submit:
+      defaults:
+        update: 更新
       user:
         create: 注册
+        update: 确定
       train:
-        create: 确认
+        create: 确定
+        update: 更新
   activerecord:
     models:
       user: 用户

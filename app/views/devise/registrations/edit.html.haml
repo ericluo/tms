@@ -1,32 +1,19 @@
 %h2 个人信息设置
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), 
+                  :html => { :method => :put }) do |f|
   = devise_error_messages!
-  %div
-    = f.label "姓名"
-    = f.text_field :name
-  %div 
-    = f.label "部门"
-    = f.collection_select :department_id, Department.all, :id, :name, :selected => resource.department_id
-  %div
-    = f.label "账号"
-    = f.email_field :email
-  %div
-    = f.label "新密码"
-    %i (如不修改密码，请留空)
-    %br
-    = f.password_field :password, :autocomplete => "off"
-  %div
-    = f.label "新密码确认"
-    = f.password_field :password_confirmation
-  %div
-    = f.label "原密码"
-    %i (请输入原密码确认变更)
-    %br
-    = f.password_field :current_password
-  %div
-    = f.label "职务"
-    = f.collection_select :position, User::POSITION.to_pair_with_index, :second, :first, :selected => resource.position
-  %div= f.submit "确定"
+  
+  .form-inputs
+    = f.input :name
+    = f.association :department
+    = f.input :email
+    = f.input :password, as: :password, autocomplete: "off"
+    = f.input :password_confirmation, as: :password
+    = f.input :current_password, as: :password, hint: "请输入原密码确认变更"
+    = f.association :position
+    
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
 %p
-  = link_to "注销", registration_path(resource_name), :data => {:confirm => "确定吗?"}, :method => :delete
-  = link_to "返回", :back
+= link_to "注销", registration_path(resource_name), :data => {:confirm => "确定吗?"}, :method => :delete
+= link_to "返回", :back

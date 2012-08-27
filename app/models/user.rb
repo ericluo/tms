@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   belongs_to :department
   has_many   :trains
-  has_one    :position
+  belongs_to :position
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me

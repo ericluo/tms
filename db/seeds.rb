@@ -31,9 +31,9 @@ user2 = User.create!(:name => '张三', :email => 'user1@example.com',
                     :department_id => 5, :position_id => 1)
 puts 'New user created: ' << user2.name
 
-puts "SETTING UP DEFAULT TRAIN CATEGORY"
-Category.delete_all
-[["脱产培训", "OffJobTrainRule"],["讲座培训", "LectureTrainRule"]].each do |n, r|
-  Category.create!(name: n, rule: r)
-end
+# puts "SETTING UP DEFAULT TRAIN CATEGORY"
+# Category.delete_all
+# [["脱产培训", "OffJobTrainRule"],["讲座培训", "LectureTrainRule"]].each do |n, r|
+#   Category.create!(name: n, rule: r)
+# end
 
