@@ -1,0 +1,23 @@
+%h1 Listing in_job_train_catalogs
+
+%table
+  %tr
+    %th Title
+    %th Level
+    %th Score
+    %th
+    %th
+    %th
+
+  - @in_job_train_catalogs.each do |in_job_train_catalog|
+    %tr
+      %td= in_job_train_catalog.title
+      %td= in_job_train_catalog.level
+      %td= in_job_train_catalog.score
+      %td= link_to 'Show', in_job_train_catalog
+      %td= link_to 'Edit', edit_in_job_train_catalog_path(in_job_train_catalog)
+      %td= link_to 'Destroy', in_job_train_catalog, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New In job train catalog', new_in_job_train_catalog_path

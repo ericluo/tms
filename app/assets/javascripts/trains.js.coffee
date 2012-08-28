@@ -1,11 +1,23 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
-node = $('#train_category')
-
 jQuery ->
+  node = $('#train_category')
+  catalog_node =
   node.change ->
-    type = node.value()
+    type = node.val()
     if(type is '在岗培训')
-        node.parent().append("<select id='injob_type'><option value='test'></option></select>")
+      # request ajax call
+      $.ajax({
+        type: 'get',
+        url: "http://192.168.1.25:3000/in_job_train_catalogs.json"
+        success: select_populate})
+    else
+      $('#in_job_train_catalog').remove()
+
+select_populate = (data) ->
+  select_html = "<select id='in_job_train_catalog' name='train[in_job_train_catalog_id]' class='select optional'>"
+  for d in data
+    select_html += "<option value='#{d.id}'>#{d.title} -- #{d.level}</option>"
+  select_html += "</select>"
+  $('#train_category').parent().append(select_html)

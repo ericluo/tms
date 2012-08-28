@@ -13,6 +13,7 @@ class CreateTrains < ActiveRecord::Migration
       t.float :period
       t.string :organizer
 
+      t.references :in_job_train_catalog
       t.timestamps
     end
   end

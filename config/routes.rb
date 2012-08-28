@@ -1,4 +1,6 @@
 Tms::Application.routes.draw do
+  resources :in_job_train_catalogs
+
   resources :trains
 
   resources :departments

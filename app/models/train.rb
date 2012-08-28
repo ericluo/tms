@@ -6,7 +6,7 @@ class Train < ActiveRecord::Base
   
   attr_accessible :name, :category, :score, :comment, :organizer
   attr_accessible :start_date, :end_date, :period
-  attr_accessible :trainee_id, :registrar_id
+  attr_accessible :trainee_id, :registrar_id, :in_job_train_catalog_id
   # attr_accessible :certificate
 
   CATEGORIES = %w[脱产培训 讲座培训 在岗培训 再培训 其他培训]
@@ -14,9 +14,9 @@ class Train < ActiveRecord::Base
   def scoring_rule
     case category
     when "脱产培训" then ScoringRule::OffJobTrain
-    # when "讲座培训": then ScoringRule::LectureTrain
-    # when "在岗培训": then ScoringRule::InJobTrain
-    # when "再培训": then ScoringRule::ReTrain
+    when "讲座培训" then ScoringRule::LectureTrain
+    when "在岗培训" then ScoringRule::InJobTrain
+    when "再培训" then ScoringRule::ReTrain
     end
     
   end
@@ -43,27 +43,22 @@ class Train < ActiveRecord::Base
     end
 
     module LectureTrain
-
       def self.score(train)
         2
       end
-
     end
 
     module InJobTrain
-
       def self.score(train)
-
+        c = InJobTrainCatalog.find(train.in_job_train_catalog_id)
+        c.score
       end
-
     end
 
     module ReTrain
-
       def self.score(train)
         10
       end
-
     end
       
   end

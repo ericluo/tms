@@ -37,3 +37,10 @@ puts 'New user created: ' << user2.name
 #   Category.create!(name: n, rule: r)
 # end
 
+# puts "setting up default InJobTrainCatalog"
+[["三大模块", "初级", 2], ["三大模块", "中级", 4], ["三大模块", "高级", 6],
+ ["学历教育", "本科", 6], ["学历交易", "硕士", 9], ["学历教育", "博士", 15],
+ ["专业证书", "初级", 3], ["专业证书", "中级", 6], ["专业证书", "高级", 9], ["专业证书", "特级", 12]].each do |c|
+  InJobTrainCatalog.create!(title: c[0], level: c[1], score: c[2])
+end
+
