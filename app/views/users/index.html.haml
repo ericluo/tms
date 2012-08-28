@@ -11,5 +11,7 @@
     %tr
       %td= link_to user.name, user
       %td= user.department.name
-      %td= user.position_title
+      %td= user.position.name
       %td= user.email
+      
+  = will_paginate @users

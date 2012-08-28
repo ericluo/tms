@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     authorize! :index, current_user, :message => 'Not authorized as an administrator.'
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
