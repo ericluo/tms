@@ -8,6 +8,7 @@ class TrainsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @trains }
       format.csv {send_data Train.to_csv}
+      format.xls
     end
   end
 
