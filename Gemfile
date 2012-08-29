@@ -5,6 +5,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 end
 group :development do
   gem 'pry'
@@ -34,4 +35,5 @@ gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
 gem "simple_form"
 gem "therubyracer", :group => :assets, :platform => :ruby
-gem 'will_paginate', "~> 3.0.0"
+# gem 'will_paginate', "~> 3.0.0"
+

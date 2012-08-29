@@ -1,6 +1,11 @@
-%h1 Listing trains
+导出:
+= link_to "CSV", trains_path(format: "csv") 
+\|
+= link_to "Excel", trains_path(format: "xls")
 
-%table.table.table-striped
+%br
+
+%table.table.table-striped.datatable
   %tr
     %th 项目名称
     %th 培训类型

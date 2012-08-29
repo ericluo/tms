@@ -3,5 +3,4 @@ class Department < ActiveRecord::Base
 
   attr_accessible :name, :order
 
-  self.per_page = 10
 end

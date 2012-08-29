@@ -26,6 +26,15 @@ class Train < ActiveRecord::Base
   def calc_score
     self.score = scoring_rule.score(self)
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |t|
+        csv << t.attributes.values_at(*column_names)
+      end
+    end
+  end
   
   module ScoringRule
     module OffJobTrain

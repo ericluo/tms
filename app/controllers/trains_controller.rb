@@ -7,6 +7,7 @@ class TrainsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trains }
+      format.csv {send_data Train.to_csv}
     end
   end
 

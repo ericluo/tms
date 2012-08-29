@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require bootstrap
+//= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .
+
+jQuery ->
+  $('.datatable').dataTable(
+    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+    "sPaginationType": "bootstrap"
+  )
+
