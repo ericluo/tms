@@ -1,40 +1,43 @@
-导出:
-= link_to "CSV", trains_path(format: "csv") 
-\|
-= link_to "Excel", trains_path(format: "xls")
 
-%br
-
-%table.table.table-striped.datatable
-  %tr
-    %th 项目名称
-    %th 培训类型
-    %th 举办单位
-    %th 受训人员
-    %th 开始日期
-    %th 结束日期
-    %th 学时
-    %th 学分
-    %th 录入人
-    %th
-    %th
-    %th
-
-  - @trains.each do |train|
+%table.table.table-striped.table-bordered.datatable
+  %thead
     %tr
-      %td= train.name
-      %td= train.category
-      %td= train.organizer
-      %td= train.trainee.name
-      %td= train.start_date
-      %td= train.end_date
-      %td= train.period
-      %td= train.score
-      %td= train.registrar.name
-      %td= link_to 'Show', train
-      %td= link_to 'Edit', edit_train_path(train)
-      %td= link_to 'Destroy', train, :confirm => 'Are you sure?', :method => :delete
+      %th 项目名称
+      %th 培训类型
+      %th 举办单位
+      %th 受训人员
+      %th 开始日期
+      %th 结束日期
+      %th 学时
+      %th 学分
+      %th 录入人
+      %th
+      %th
+      %th
+
+  %tbody      
+    - @trains.each do |train|
+      %tr
+        %td= train.name
+        %td= train.category
+        %td= train.organizer
+        %td= train.trainee.name
+        %td= train.start_date
+        %td= train.end_date
+        %td= train.period
+        %td= train.score
+        %td= train.registrar.name
+        %td= link_to 'Show', train
+        %td= link_to 'Edit', edit_train_path(train)
+        %td= link_to 'Destroy', train, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Train', new_train_path
+.well
+  = link_to '培训登记', new_train_path, class: "btn btn-large"
+  .pull-right
+    导出:
+    = link_to "CSV", trains_path(format: "csv"), class: "btn"
+    \|
+    = link_to "Excel", trains_path(format: "xls"), class: "btn"
+

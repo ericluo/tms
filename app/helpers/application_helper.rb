@@ -1,3 +1,5 @@
+# coding: utf-8 
+
 module ApplicationHelper
   def excel_document(xml, &block)
     xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8" 
@@ -11,15 +13,14 @@ module ApplicationHelper
 
       xml.Styles do
         xml.Style 'ss:ID' => 'Default', 'ss:Name' => 'Normal' do
-          xml.Alignment 'ss:Vertical' => 'Bottom'
+          xml.Alignment 'ss:Vertical' => 'Center'
           xml.Borders
-          xml.Font 'ss:FontName' => 'Arial'
+          xml.Font 'ss:FontName' => '宋体'
           xml.Interior
           xml.NumberFormat
           xml.Protection
         end
       end
-
       yield block
     end
   end

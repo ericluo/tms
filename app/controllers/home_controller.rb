@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    unless user_signed_in?
+      render "shared/login"
+    end
     # binding.pry_remote # demo for pow web server
   end
 end

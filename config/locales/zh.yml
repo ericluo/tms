@@ -211,6 +211,7 @@ zh:
       user:
         create: 注册
         update: 确定
+        commit: 登录
       train:
         create: 确定
         update: 更新
@@ -220,6 +221,9 @@ zh:
       train: 培训
     attributes:
       user:
+        email: 账号
+        password: 密码
+        remember_me: 下次记住
       train: 
         type: 培训类型
         name: 项目名称
