@@ -1,9 +1,10 @@
 class TrainsController < ApplicationController
+
+  load_and_authorize_resource 
   # GET /trains
   # GET /trains.json
   def index
-    @trains = Train.all
-
+    # binding.pry_remote
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trains }
@@ -15,8 +16,6 @@ class TrainsController < ApplicationController
   # GET /trains/1
   # GET /trains/1.json
   def show
-    @train = Train.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @train }
@@ -26,8 +25,6 @@ class TrainsController < ApplicationController
   # GET /trains/new
   # GET /trains/new.json
   def new
-    @train = Train.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @train }
@@ -36,13 +33,11 @@ class TrainsController < ApplicationController
 
   # GET /trains/1/edit
   def edit
-    @train = Train.find(params[:id])
   end
 
   # POST /trains
   # POST /trains.json
   def create
-    @train = Train.new(params[:train])
     @train.registrar = current_user
 
     respond_to do |format|

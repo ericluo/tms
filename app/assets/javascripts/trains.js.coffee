@@ -10,7 +10,7 @@ jQuery ->
       # request ajax call
       $.ajax({
         type: 'get',
-        url: "http://192.168.1.25:3000/in_job_train_catalogs.json"
+        url: "/in_job_train_catalogs.json"
         success: select_populate})
     else
       $('#in_job_train_catalog').remove()

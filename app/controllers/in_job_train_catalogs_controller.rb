@@ -1,4 +1,5 @@
 class InJobTrainCatalogsController < ApplicationController
+  skip_authorization_check
   # GET /in_job_train_catalogs
   # GET /in_job_train_catalogs.json
   def index

@@ -223,7 +223,7 @@ zh:
       user:
         email: 账号
         password: 密码
-        remember_me: 下次记住
+        remember_me: 记住登录状态
       train: 
         type: 培训类型
         name: 项目名称

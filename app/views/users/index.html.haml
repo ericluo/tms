@@ -1,17 +1,19 @@
 %h1 用户列表
 
-%table.table.table-striped
-  %tr
-    %th 姓名
-    %th 部门
-    %th 职务
-    %th 账号
-
-  - @users.each do |user|
+%table.table.table-striped.table-bordered.datatable
+  %thead
     %tr
-      %td= link_to user.name, user
-      %td= user.department.name
-      %td= user.position.name
-      %td= user.email
-      
-  = will_paginate @users
+      %th 姓名
+      %th 部门
+      %th 职务
+      %th 账号
+
+  %tbody    
+    - @users.each do |user|
+      %tr
+        %td= link_to user.name, user
+        %td= user.department.name
+        %td= user.position.name
+        %td= user.email
+        
+= link_to "用户注册", new_user_registration_path, class: "btn"      
