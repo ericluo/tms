@@ -24,4 +24,10 @@ module ApplicationHelper
       yield block
     end
   end
+
 end
+
+module NavigationHelper
+
+end
+

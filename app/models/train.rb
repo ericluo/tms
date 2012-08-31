@@ -21,6 +21,10 @@ class Train < ActiveRecord::Base
     
   end
   
+  def in_job_train?
+    category == "在岗培训"
+  end
+  
   before_save :calc_score
 
   def calc_score

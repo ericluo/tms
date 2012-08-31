@@ -1,6 +1,11 @@
+# -*- coding: utf-8 -*-
 class TrainsController < ApplicationController
 
   load_and_authorize_resource 
+  add_breadcrumb("培训管理", "trains_path")
+  add_breadcrumb("培训登记", '', only: [:new, :create])
+  add_breadcrumb("信息修订", '', only: [:edit, :update])
+  
   # GET /trains
   # GET /trains.json
   def index
@@ -16,6 +21,7 @@ class TrainsController < ApplicationController
   # GET /trains/1
   # GET /trains/1.json
   def show
+    add_breadcrumb(@train.name)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @train }
