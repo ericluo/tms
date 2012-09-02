@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828052739) do
+ActiveRecord::Schema.define(:version => 20120824015036) do
 
   create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.string   "rule"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string  "name"
+    t.integer "parent_id"
+    t.integer "lft"
+    t.integer "rgt"
+    t.integer "depth"
+    t.string  "scoring_rule"
   end
 
   create_table "departments", :force => true do |t|
@@ -25,12 +27,6 @@ ActiveRecord::Schema.define(:version => 20120828052739) do
     t.integer  "order"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "in_job_train_catalogs", :force => true do |t|
-    t.string  "title"
-    t.string  "level"
-    t.integer "score"
   end
 
   create_table "positions", :force => true do |t|
@@ -52,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20120828052739) do
 
   create_table "trains", :force => true do |t|
     t.string   "name"
-    t.string   "category"
+    t.integer  "category_id"
     t.integer  "trainee_id"
     t.integer  "registrar_id"
     t.date     "start_date"
@@ -62,9 +58,8 @@ ActiveRecord::Schema.define(:version => 20120828052739) do
     t.text     "comment"
     t.float    "period"
     t.string   "organizer"
-    t.integer  "in_job_train_catalog_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

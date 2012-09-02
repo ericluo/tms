@@ -1,4 +1,4 @@
-%table.table.table-striped.datatable
+%table.table.table-striped.table-bordered.datatable
   %thead
     %tr
       %th 部门名称
@@ -17,4 +17,6 @@
         %td= link_to '删除', department, :confirm => '确定删除吗？', :method => :delete
 
   -# = will_paginate @departments    
-= link_to '新增部门', new_department_path
+%hr  
+.well  
+  = link_to '新增部门', new_department_path, class: "btn btn-large"

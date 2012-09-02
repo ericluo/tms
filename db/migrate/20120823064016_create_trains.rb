@@ -2,7 +2,7 @@ class CreateTrains < ActiveRecord::Migration
   def change
     create_table :trains do |t|
       t.string :name
-      t.string :category
+      t.references :category
       t.references :trainee
       t.references :registrar
       t.date :start_date
@@ -13,7 +13,6 @@ class CreateTrains < ActiveRecord::Migration
       t.float :period
       t.string :organizer
 
-      t.references :in_job_train_catalog
       t.timestamps
     end
   end

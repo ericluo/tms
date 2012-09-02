@@ -23,7 +23,6 @@ user = User.create!(:name => '罗文波', :email => 'user@example.com',
                     :password => 'please', :password_confirmation => 'please',
                     :department_id => 2, :position_id => 4)
 puts 'New user created: ' << user.name
-
 user.add_role "admin"
 
 user2 = User.create!(:name => '张三', :email => 'user1@example.com',
@@ -31,16 +30,30 @@ user2 = User.create!(:name => '张三', :email => 'user1@example.com',
                     :department_id => 5, :position_id => 1)
 puts 'New user created: ' << user2.name
 
-# puts "SETTING UP DEFAULT TRAIN CATEGORY"
-# Category.delete_all
-# [["脱产培训", "OffJobTrainRule"],["讲座培训", "LectureTrainRule"]].each do |n, r|
-#   Category.create!(name: n, rule: r)
-# end
+def populate_category(name, parent, score = '')
+  c = Category.new(name: name)
+  c.parent = parent
+  c.scoring_rule = score
+  c.save!
+  c
+end
 
-# puts "setting up default InJobTrainCatalog"
-[["三大模块", "初级", 2], ["三大模块", "中级", 4], ["三大模块", "高级", 6],
- ["学历教育", "本科", 6], ["学历交易", "硕士", 9], ["学历教育", "博士", 15],
- ["专业证书", "初级", 3], ["专业证书", "中级", 6], ["专业证书", "高级", 9], ["专业证书", "特级", 12]].each do |c|
-  InJobTrainCatalog.create!(title: c[0], level: c[1], score: c[2])
+puts "SETTING UP DEFAULT TRAIN CATEGORIES"
+Category.delete_all
+offjob = Category.create!(name: "脱产培训")
+lecture = Category.create!(name: "讲座培训")
+injob = Category.create!(name: "在岗培训")
+injobs = []
+%w[三大模块 学历教育 专业证书].each do |name|
+  injobs << populate_category(name, injob)
+end
+[["初级", 2], ["中级", 4], ["高级", 6]].each do |l, s|
+  populate_category(l, injobs[0], s)
+end
+[["本科", 6], ["硕士", 9], ["博士", 15]].each do |l, s|
+  populate_category(l, injobs[1], s)
+end
+[["初级", 3], ["中级", 6], ["高级", 9], ["特级", 12]].each do |l, s|
+  populate_category(l, injobs[2], s)
 end
 

@@ -2,9 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :category, collection: Train::CATEGORIES
-    - if @train.in_job_train?
-      = f.association :in_job_train_catalog
+    -# = f.input :category, collection: Train::CATEGORIES
+    = f.input :category_id do
+      = f.select :category_id, nested_set_options(Category, @category){|i| "#{'-' * i.level} #{i.name}"} 
     = f.association :trainee, include_blank: false
     = f.input :name
     = f.input :start_date, as: :string, hint: '格式: 2012-08-21'

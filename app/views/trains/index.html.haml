@@ -19,7 +19,7 @@
     - @trains.each do |train|
       %tr
         %td= train.name
-        %td= train.category
+        %td= train.category.root.name
         %td= train.organizer
         %td= train.trainee.name
         %td= train.start_date

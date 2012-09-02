@@ -1,4 +1,10 @@
+# coding: utf-8
 class DepartmentsController < ApplicationController
+  load_and_authorize_resource 
+  add_breadcrumb "部门管理", "departments_path"
+  add_breadcrumb("新增部门", '', only: [:new, :create])
+  add_breadcrumb("部门编辑", '', only: [:edit, :update])
+  
   # GET /departments
   # GET /departments.json
   def index

@@ -38,6 +38,8 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.2)
     arel (3.0.2)
+    awesome_nested_set (2.1.4)
+      activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.4.0)
     builder (3.0.0)
@@ -219,6 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
+  awesome_nested_set
   bootstrap-sass (>= 2.0.4.0)
   cancan (>= 1.6.8)
   capybara (>= 1.1.2)

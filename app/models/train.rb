@@ -1,34 +1,24 @@
 # -*- coding: utf-8 -*-
 class Train < ActiveRecord::Base
 
+  belongs_to :category
   belongs_to :trainee, class_name: "User"
   belongs_to :registrar, class_name: "User"
   
-  attr_accessible :name, :category, :score, :comment, :organizer
+  attr_accessible :name, :category_id, :score, :comment, :organizer
   attr_accessible :start_date, :end_date, :period
   attr_accessible :trainee_id, :registrar_id, :in_job_train_catalog_id
   # attr_accessible :certificate
-
-  CATEGORIES = %w[脱产培训 讲座培训 在岗培训 再培训 其他培训]
   
-  def scoring_rule
-    case category
-    when "脱产培训" then ScoringRule::OffJobTrain
-    when "讲座培训" then ScoringRule::LectureTrain
-    when "在岗培训" then ScoringRule::InJobTrain
-    when "再培训" then ScoringRule::ReTrain
+  def score
+    root_category = category.root
+    case root_category.name
+    when "脱产培训" then 2
+    when "讲座培训" then 2
+    when "在岗培训" then category.scoring_rule.to_i
+    when "再培训"   then 10
+    else  0
     end
-    
-  end
-  
-  def in_job_train?
-    category == "在岗培训"
-  end
-  
-  before_save :calc_score
-
-  def calc_score
-    self.score = scoring_rule.score(self)
   end
 
   def self.to_csv

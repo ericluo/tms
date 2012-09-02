@@ -16,6 +16,9 @@ group :development do
 
   gem 'RedCloth'
 end
+
+gem 'awesome_nested_set'
+
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1", :group => [:development, :test]
 gem "thin", ">= 1.4.1", :group => :production
