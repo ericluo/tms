@@ -5,6 +5,6 @@
     = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
 
   .form-actions
-    = f.button :submit, "登录"
+    = f.button :submit, "登录", class: 'btn-primary'
 
 = render "devise/shared/links"
