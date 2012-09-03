@@ -1,4 +1,9 @@
-
+.well
+  .pull-right
+    导出:
+    = link_to "CSV", trains_path(format: "csv"), class: "btn"
+    \|
+    = link_to "Excel", trains_path(format: "xls"), class: "btn"
 %table.table.table-striped.table-bordered.datatable
   %thead
     %tr
@@ -27,17 +32,12 @@
         %td= train.period
         %td= train.score
         %td= train.registrar.name
-        %td= link_to 'Show', train
-        %td= link_to 'Edit', edit_train_path(train)
-        %td= link_to 'Destroy', train, :confirm => 'Are you sure?', :method => :delete
+        %td= link_to '查看', train
+        %td= link_to '编辑', edit_train_path(train)
+        %td= link_to '删除', train, :confirm => '确定删除吗?', :method => :delete
 
 %br
 
 .well
   = link_to '培训登记', new_train_path, class: "btn btn-large"
-  .pull-right
-    导出:
-    = link_to "CSV", trains_path(format: "csv"), class: "btn"
-    \|
-    = link_to "Excel", trains_path(format: "xls"), class: "btn"
 

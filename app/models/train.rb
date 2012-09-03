@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 class Train < ActiveRecord::Base
 
+  validates :name, :category_id, :trainee_id, :registrar_id, presence: true
+  validates :start_date, :end_date, format: {with: /\d{4}-\d{2}-\d{2}/, message: "数据格式必须为：YYYY-MM-DD"}
+
   belongs_to :category
   belongs_to :trainee, class_name: "User"
   belongs_to :registrar, class_name: "User"
   
-  attr_accessible :name, :category_id, :score, :comment, :organizer
+  attr_accessible :name, :score, :comment, :organizer
   attr_accessible :start_date, :end_date, :period
-  attr_accessible :trainee_id, :registrar_id, :in_job_train_catalog_id
+  attr_accessible :trainee_id, :registrar_id, :category_id
   # attr_accessible :certificate
   
   def score
@@ -35,7 +38,7 @@ class Train < ActiveRecord::Base
   # period must be integer,
   # TODO what if duration be float
   def offjob_score
-    duration = period.nil? ? (end_date - start_date).to_i : period
+    duration = period.nil? ? (end_date - start_date + 1).to_i : period
     scores = duration * 3
     case duration
     when 1..3 then [scores, 8].min

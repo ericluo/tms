@@ -3,12 +3,12 @@
   = devise_error_messages!
   
   .form-inputs
-    = f.input :name
-    = f.association :department
-    = f.input :email
-    = f.input :password, as: :password
-    = f.input :password_confirmation, as: :password
-    = f.input :position, collection: Position.all, label_method: :name, value_method: :id
+    = f.input :name, required: true
+    = f.association :department, required: true
+    = f.input :email, required: true
+    = f.input :password, as: :password, required: true
+    = f.input :password_confirmation, as: :password, required: true
+    = f.input :position, collection: Position.all, label_method: :name, value_method: :id, required: true
     
   .form-actions
     = f.button :submit, class: 'btn-primary'

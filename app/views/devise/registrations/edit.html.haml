@@ -4,13 +4,13 @@
   = devise_error_messages!
   
   .form-inputs
-    = f.input :name
-    = f.association :department
-    = f.input :email
-    = f.input :password, as: :password, autocomplete: "off"
-    = f.input :password_confirmation, as: :password
-    = f.input :current_password, as: :password, hint: "请输入原密码确认变更"
-    = f.association :position
+    = f.input :name, required: true
+    = f.association :department, required: true
+    = f.input :email, required: true
+    = f.input :password, as: :password, autocomplete: "off", required: true
+    = f.input :password_confirmation, as: :password, required: true
+    = f.input :current_password, as: :password, hint: "请输入原密码确认变更", required: true
+    = f.association :position, required: true
     
   .form-actions
     = f.button :submit, class: 'btn-primary'

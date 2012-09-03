@@ -60,24 +60,20 @@
     <Cell ss:StyleID="s25"><Data ss:Type="String">姓名</Data></Cell>
     <Cell ss:StyleID="s25"><Data ss:Type="String"><%= current_user.name %></Data></Cell>
     <Cell ss:StyleID="s25"><Data ss:Type="String">累计学分</Data></Cell>
-    <Cell ss:StyleID="s25"/>
+    <Cell ss:StyleID="s25"><Data ss:Type="String"><%= current_user.total_score %></Data></Cell>
     <Cell ss:StyleID="s25"><Data ss:Type="String">累计学时</Data></Cell>
-    <Cell ss:StyleID="s25"/>
+    <Cell ss:StyleID="s25"><Data ss:Type="String"><%= current_user.total_period %></Data></Cell>
     <Cell ss:StyleID="s25"><Data ss:Type="String">排名</Data></Cell>
     <Cell ss:StyleID="s25"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24.75">
-    <Cell ss:StyleID="s21"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:MergeAcross="6" ss:StyleID="s28"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24.75">
-    <Cell ss:StyleID="s21"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:MergeAcross="6" ss:StyleID="s28"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="24.75">
-    <Cell ss:StyleID="s21"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:MergeAcross="6" ss:StyleID="s28"/>
-   </Row>
+   <- @trains.each_with_index do |t, i| >
+     <Row ss:AutoFitHeight="0" ss:Height="24.75">
+       <Cell ss:StyleID="s21"><Data ss:Type="Number"><%= i + 1 ></Data></Cell>
+       <Cell ss:MergeAcross="6" ss:StyleID="s28"/>
+         <Data ss:Type="String">
+           <%= "#{t.start_date}--#{t.end_date} #{t.name}" >
+         </Data>
+     </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>

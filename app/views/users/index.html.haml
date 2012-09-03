@@ -5,6 +5,9 @@
       %th 部门
       %th 职务
       %th 账号
+      %th
+      %th
+      %th
 
   %tbody    
     - @users.each do |user|
@@ -13,5 +16,9 @@
         %td= user.department.name
         %td= user.position.name
         %td= user.email
+        %td= link_to '查看', user
+        %td= link_to '编辑', edit_user_registration_path(user)
+        %td= link_to '删除', user, :confirm => '确定删除吗?', :method => :delete
+        
         
 = link_to "用户注册", new_user_registration_path, class: "btn"      

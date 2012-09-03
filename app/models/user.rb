@@ -8,11 +8,19 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :department
-  has_many   :trains
+  has_many   :trains, foreign_key: "trainee_id"
   belongs_to :position
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_accessible :position_id, :department_id
+  
+  def total_score
+    trains.sum(&:score)
+  end
+
+  def total_period
+    trains.sum(&:period)
+  end
   
 end
