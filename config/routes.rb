@@ -1,10 +1,13 @@
 Tms::Application.routes.draw do
-  resources :trains
+  resources :trains do
+    collection do
+      get 'register'
+      get 'search'
+    end
+  end
 
-  resources :departments
+  resources :departments, :categories, :positions
 
-  resources :categories
-  
   authenticated :user, lambda {|u| u.has_role?("admin")} do
     root :to => 'trains#index'
   end

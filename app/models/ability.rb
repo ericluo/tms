@@ -8,6 +8,7 @@ class Ability
       can :manage, :all
     else
       can :read, Train, trainee_id: user.id
+      can :manage, Train, registrar_id: user.id
       can :create, Train
     end
     # Define abilities for the passed in user here. For example:

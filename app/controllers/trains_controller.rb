@@ -2,14 +2,26 @@
 class TrainsController < ApplicationController
 
   load_and_authorize_resource 
-  add_breadcrumb("培训管理", "trains_path")
-  add_breadcrumb("培训登记", '', only: [:new, :create])
+  add_breadcrumb("学分管理", "trains_path")
+  add_breadcrumb("我的学分", "trains_path", only: [:index])
+  add_breadcrumb("我的登记簿", "register_trains_path", only: [:register])
+  add_breadcrumb("学分登记", '', only: [:new, :create])
   add_breadcrumb("信息修订", '', only: [:edit, :update])
   
   # GET /trains
   # GET /trains.json
   def index
-    # binding.pry_remote
+    @trains = @trains.where(trainee_id: current_user.id)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @trains }
+      format.csv {send_data Train.to_csv}
+      format.xls
+    end
+  end
+
+  def register
+    @trains = @trains.where(registrar_id: current_user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trains }

@@ -10,11 +10,11 @@
       %th 项目名称
       %th 培训类型
       %th 举办单位
+      %th 受训人员
       %th 开始日期
       %th 结束日期
       %th 学时
       %th 学分
-      %th 录入人
       %th
       %th
       %th
@@ -25,11 +25,11 @@
         %td= train.name
         %td= train.category.root.name
         %td= train.organizer
+        %td= train.trainee.name
         %td= train.start_date
         %td= train.end_date
         %td= train.period
         %td= train.score
-        %td= train.registrar.name
         %td= link_to '查看', train
         %td= link_to '编辑', edit_train_path(train)
         %td= link_to '删除', train, :confirm => '确定删除吗?', :method => :delete

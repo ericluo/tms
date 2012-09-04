@@ -1,8 +1,9 @@
 .row
   %ul.nav.nav-tabs.nav-stacked
-    %li.nav-header.alert-info 培训管理
-    %li= link_to "培训登记", new_train_path
-    %li= link_to "培训记录", trains_path  
+    %li.nav-header.alert-info 学分管理
+    %li= link_to "学分登记", new_train_path
+    %li= link_to "我的学分", trains_path  
+    %li= link_to "我的登记簿", register_trains_path
 
 - if can? :manage, :all  
   .row
@@ -10,7 +11,8 @@
       %li.nav-header.alert-info 系统管理    
       %li= link_to "用户管理", users_path
       %li= link_to "部门管理", departments_path
-      %li= link_to "培训类别管理", categories_path
+      %li= link_to "职务管理", positions_path
+      -# %li= link_to "培训类别管理", categories_path
       
   .row
     %ul.nav.nav-tabs.nav-stacked

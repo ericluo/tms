@@ -4,6 +4,10 @@ class Train < ActiveRecord::Base
   validates :name, :category_id, :trainee_id, :registrar_id, presence: true
   validates :start_date, :end_date, format: {with: /\d{4}-\d{2}-\d{2}/, message: "数据格式必须为：YYYY-MM-DD"}
 
+  validates_each :category_id do |record, attr, value|
+    record.errors.add(attr, "请选择明确的培训类别") unless Category.find(value).leaf?
+  end
+
   belongs_to :category
   belongs_to :trainee, class_name: "User"
   belongs_to :registrar, class_name: "User"
