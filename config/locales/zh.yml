@@ -215,10 +215,19 @@ zh:
       train:
         create: 确定
         update: 更新
+      report:
+        create: 生成报表
+      department:
+        create: 确定
+        update: 更新
+      position:
+        create: 确定
+        update: 更新
   activerecord:
     models:
       user: 用户
       train: 培训
+      department: 部门
     attributes:
       user:
         email: 账号

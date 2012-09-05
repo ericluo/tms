@@ -1,4 +1,8 @@
 Tms::Application.routes.draw do
+  resources :report_definitions
+
+  resources :reports
+
   resources :trains do
     collection do
       get 'register'

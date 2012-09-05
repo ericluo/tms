@@ -5,14 +5,12 @@
       %th 排列次序
       %th
       %th
-      %th
 
   %tbody      
     - @departments.each do |department|
       %tr
         %td= department.name
         %td= department.order
-        %td= link_to '查看', department
         %td= link_to '编辑', edit_department_path(department)
         %td= link_to '删除', department, :confirm => '确定删除吗？', :method => :delete
 

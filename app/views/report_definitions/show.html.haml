@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @report_definition.name
+%p
+  %b Template:
+  = @report_definition.template
+
+= link_to 'Edit', edit_report_definition_path(@report_definition)
+\|
+= link_to 'Back', report_definitions_path

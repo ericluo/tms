@@ -1,0 +1,9 @@
+= simple_form_for(@position) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, required: true
+    = f.input :order, collection: 1..10, required: true
+
+  .form-actions
+    = f.button :submit, class: "btn-primary"

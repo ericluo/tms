@@ -21,3 +21,7 @@
 #     select_html += "<option value='#{d.id}'>#{d.title} -- #{d.level}</option>"
 #   select_html += "</select>"
 #   $('#train_category').parent().append(select_html)
+
+jQuery ->
+  options = $.extend {"aaSorting": [[3, "asc"]]}, dt_options
+  $('#trains').dataTable(options)

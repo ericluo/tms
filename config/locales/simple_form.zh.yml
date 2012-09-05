@@ -37,6 +37,12 @@ zh:
           password              : 新密码
           password_confirmation : 新密码确认
           current_password      : 原密码
+      department:
+        name  : 部门名称
+        order : 部门排序
+      position:
+        name  : 职位名称
+        order : 职位排序
       train:
         category_id : 培训类别
         trainee     : 参训人员
@@ -46,3 +52,8 @@ zh:
         period      : 学时
         organizer   : 举办单位
         comment     : 备注
+      report:
+        report_definition: 报表类型
+        start_date : 起始日期
+        end_date   : 终止日期
+        title      : 报表标题

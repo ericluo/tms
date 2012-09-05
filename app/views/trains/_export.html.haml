@@ -1,0 +1,7 @@
+- unless @trains.empty?
+  .well
+    .pull-right
+      导出:
+      = link_to "CSV", trains_path(format: "csv"), class: "btn"
+      \|
+      = link_to "Excel", trains_path(format: "xls"), class: "btn"

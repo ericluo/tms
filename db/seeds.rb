@@ -21,7 +21,7 @@ puts 'SETTING UP DEFAULT USER LOGIN'
 User.delete_all
 user = User.create!(:name => '罗文波', :email => 'user@example.com',
                     :password => 'please', :password_confirmation => 'please',
-                    :department_id => 2, :position_id => 4)
+                    :department_id => 2, :position_id => 5)
 puts 'New user created: ' << user.name
 user.add_role "admin"
 
