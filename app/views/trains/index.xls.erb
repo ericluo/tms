@@ -66,14 +66,14 @@
     <Cell ss:StyleID="s25"><Data ss:Type="String">排名</Data></Cell>
     <Cell ss:StyleID="s25"/>
    </Row>
-   <- @trains.each_with_index do |t, i| >
+   <% @trains.each_with_index do |t, i| %>
      <Row ss:AutoFitHeight="0" ss:Height="24.75">
-       <Cell ss:StyleID="s21"><Data ss:Type="Number"><%= i + 1 ></Data></Cell>
-       <Cell ss:MergeAcross="6" ss:StyleID="s28"/>
-         <Data ss:Type="String">
-           <%= "#{t.start_date}--#{t.end_date} #{t.name}" >
-         </Data>
+       <Cell ss:StyleID="s21"><Data ss:Type="Number"><%= i + 1 %></Data></Cell>
+       <Cell ss:MergeAcross="6" ss:StyleID="s28">
+         <Data ss:Type="String"><%= "#{t.start_date}--#{t.end_date} #{t.name}" %></Data>
+       </Cell>
      </Row>
+   <% end %>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>

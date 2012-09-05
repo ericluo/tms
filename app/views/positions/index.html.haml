@@ -1,0 +1,19 @@
+%table.table.table-striped.table-bordered.datatable
+  %thead
+    %tr
+      %th 职位名称
+      %th 职位排序
+      %th
+      %th
+
+  %tbody      
+    - @positions.each do |position|
+      %tr
+        %td= position.name
+        %td= position.order
+        %td= link_to '编辑', edit_position_path(position)
+        %td= link_to '删除', position, :confirm => '确定删除吗？', :method => :delete
+
+%hr  
+.well  
+  = link_to '新增职位', new_position_path, class: "btn btn-large"

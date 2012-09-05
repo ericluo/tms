@@ -11,11 +11,11 @@ DEPS = %w[办公室 政策法规处 非现场监管一处 非现场监管二处 
           现场检查二处 城市商业银行监管处 非银行机构监管处 合作处 外资处
           直管处 统计处 财务处 人事处 监察室 机关党委 后勤服务中心 案件办]
 Department.delete_all
-DEPS.each_with_index {|d, i| Department.create!(name: d, order: i)}
+DEPS.each_with_index {|d, i| Department.create!(name: d, order: i + 1)}
 
 puts "SETTING UP DEFAULT POSITION"
 Position.delete_all
-%w[处长 正处级 副处长 副处级 科及科以下].each{|p| Position.create!(name: p)}
+%w[处长 正处级 副处长 副处级 科及科以下].each_with_index{|p,i| Position.create!(name: p, order: i +1)}
 
 puts 'SETTING UP DEFAULT USER LOGIN'
 User.delete_all

@@ -30,9 +30,8 @@ ActiveRecord::Schema.define(:version => 20120824015036) do
   end
 
   create_table "positions", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string  "name"
+    t.integer "order"
   end
 
   create_table "roles", :force => true do |t|
