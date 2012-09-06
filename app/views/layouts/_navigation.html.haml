@@ -1,11 +1,8 @@
 = link_to "湖北银监局学分管理系统", root_path, :class => 'brand'
 %ul.nav.pull-right
   - if user_signed_in?
-    %li= link_to "欢迎您，#{current_user.name}", edit_user_registration_path
-    %li= link_to '修改密码', edit_user_password_path
-    - if current_user.has_role? :admin
-      %li= link_to '系统管理', users_path
-  - if user_signed_in?
+    %li 欢迎您，#{current_user.name}
+    %li= link_to '账号管理', edit_user_path(current_user.id)
     %li= link_to '注销', destroy_user_session_path, :method=>'delete'
   - else
     %li= link_to '登录', new_user_session_path

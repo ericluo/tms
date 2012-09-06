@@ -21,5 +21,5 @@ Tms::Application.routes.draw do
   root :to => "home#index"
   devise_for :users, controllers: {registrations: "users/registrations",
                                    passwords: "users/passwords"}
-  resources :users, :only => [:show, :index]
+  resources :users, :only => [:show, :index, :edit, :update]
 end

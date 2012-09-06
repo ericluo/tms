@@ -2,19 +2,14 @@
   %thead
     %tr
       %th 角色名称
-      %th 排列次序
+      %th 
       %th
-      %th
-
   %tbody      
-    - @departments.each do |department|
+    - @roles.each do |role|
       %tr
-        %td= department.name
-        %td= department.order
-        %td= link_to '编辑', edit_department_path(department)
-        %td= link_to '删除', department, :confirm => '确定删除吗？', :method => :delete
-
-  -# = will_paginate @departments    
+        %td= role.name
+        %td= link_to '查看用户', role_path(role)
+        %td= link_to '删除', role, :confirm => '确定删除吗？', :method => :delete
 %hr  
 .well  
-  = link_to '新增部门', new_department_path, class: "btn btn-large"
+  = link_to '新增角色', new_role_path, class: "btn btn-large"

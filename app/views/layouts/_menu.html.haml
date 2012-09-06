@@ -1,10 +1,11 @@
-.row
-  %ul.nav.nav-tabs.nav-stacked
-    %li.nav-header.alert-info 学分管理
-    %li= link_to "学分登记", new_train_path
-    %li= link_to "我的学分", trains_path  
-    %li= link_to "修改密码", edit_user_password_path
-    %li= link_to "我的登记簿", register_trains_path
+- if user_signed_in?
+  .row
+    %ul.nav.nav-tabs.nav-stacked
+      %li.nav-header.alert-info 学分管理
+      %li= link_to "学分登记", new_train_path
+      %li= link_to "我的学分", trains_path 
+      %li= link_to "修改密码", edit_user_path(current_user.id)
+      %li= link_to "我的登记簿", register_trains_path
 
 - if can? :manage, :all  
   .row

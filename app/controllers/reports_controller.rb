@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class ReportsController < ApplicationController
+  before_filter :authenticate_user!
   load_and_authorize_resource
   add_breadcrumb("报表管理", "reports_path")
   add_breadcrumb("生成报表", '', only: [:new, :create])
