@@ -26,10 +26,12 @@ puts 'New user created: ' << user.name
 user.add_role "admin"
 
 user2 = User.create!(:name => '张三', :email => 'user1@example.com',
-                    :password => 'please', :password_confirmation => 'please',
-                    :department_id => 5, :position_id => 1)
+                     :password => 'please', :password_confirmation => 'please',
+                     :department_id => 5, :position_id => 1)
 puts 'New user created: ' << user2.name
 
+puts 'SETTING UP DEFAULT ROLE'
+%w[系统管理员 审核员 处室管理员].each {|r| Role.create!(name: r)}
 def populate_category(name, parent, score = '')
   c = Category.new(name: name)
   c.parent = parent
@@ -57,3 +59,7 @@ end
   populate_category(l, injobs[2], s)
 end
 
+puts 'SETTING UP DEFAULT REPORT DEFINITION'
+[%w[学分排名 score_rank], %w[学分明细 score_detail], %w[总体情况 general_info]].each do |n, t|
+   ReportDefinition.create!(name: n, template: t)
+end

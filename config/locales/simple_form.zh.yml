@@ -33,6 +33,7 @@ zh:
         department : 部门
         email      : 账号
         position   : 职务
+        roles      : 角色
         edit:
           password              : 新密码
           password_confirmation : 新密码确认

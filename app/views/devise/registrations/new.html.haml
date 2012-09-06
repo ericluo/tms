@@ -9,7 +9,8 @@
     = f.input :password, as: :password, required: true
     = f.input :password_confirmation, as: :password, required: true
     = f.input :position, collection: Position.all, label_method: :name, value_method: :id, required: true
+    = f.association :roles, as: :check_boxes, item_wrapper_class: 'inline'
     
   .form-actions
     = f.button :submit, class: 'btn-primary'
-= render "devise/shared/links"
+-# = render "devise/shared/links"

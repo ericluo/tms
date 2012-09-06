@@ -1,0 +1,9 @@
+= simple_form_for(@user, as: "User", url: password_path(@user)) do |f|
+  = f.error_notification 
+
+  .form-inputs
+    = f.input :password, :label => "新密码", :required => true 
+    = f.input :password_confirmation, :label => "重复新密码", :required => true 
+
+  .form-actions
+    = f.button :submit, "变更密码"

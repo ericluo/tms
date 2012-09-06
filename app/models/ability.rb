@@ -10,6 +10,7 @@ class Ability
       can :read, Train, trainee_id: user.id
       can :manage, Train, registrar_id: user.id
       can :create, Train
+      can :update, User, id: user.id 
     end
     # Define abilities for the passed in user here. For example:
     #

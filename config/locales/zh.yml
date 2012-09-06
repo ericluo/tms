@@ -232,6 +232,7 @@ zh:
       user:
         email: 账号
         password: 密码
+        current_password: 原密码
         remember_me: 记住登录状态
       train: 
         type: 培训类型

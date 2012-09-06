@@ -1,0 +1,20 @@
+%table#roles.table.table-striped.table-bordered.datatable
+  %thead
+    %tr
+      %th 角色名称
+      %th 排列次序
+      %th
+      %th
+
+  %tbody      
+    - @departments.each do |department|
+      %tr
+        %td= department.name
+        %td= department.order
+        %td= link_to '编辑', edit_department_path(department)
+        %td= link_to '删除', department, :confirm => '确定删除吗？', :method => :delete
+
+  -# = will_paginate @departments    
+%hr  
+.well  
+  = link_to '新增部门', new_department_path, class: "btn btn-large"

@@ -1,4 +1,6 @@
 Tms::Application.routes.draw do
+  resources :roles
+
   resources :report_definitions
 
   resources :reports
@@ -17,6 +19,7 @@ Tms::Application.routes.draw do
   end
 
   root :to => "home#index"
-  devise_for :users, controllers: {registrations: "users/registrations"}
+  devise_for :users, controllers: {registrations: "users/registrations",
+                                   passwords: "users/passwords"}
   resources :users, :only => [:show, :index]
 end

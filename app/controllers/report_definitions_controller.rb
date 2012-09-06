@@ -1,4 +1,5 @@
 class ReportDefinitionsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /report_definitions
   # GET /report_definitions.json
   def index
