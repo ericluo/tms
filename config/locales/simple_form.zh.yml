@@ -51,6 +51,7 @@ zh:
         start_date  : 开始时间
         end_date    : 结束时间
         period      : 学时
+        score       : 学分
         organizer   : 举办单位
         comment     : 备注
       report:

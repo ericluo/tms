@@ -4,10 +4,13 @@
   %b 培训类别:
   = @train.category.root.name
 %p
-  %b= t :train_name
+  %b 项目名称:
   = @train.name
 %p
-  %b= t :train_trainee
+  %b 主办部门:
+  = @train.organizer
+%p
+  %b 培训人员：
   = @train.trainee.name
 %p
   %b 开始日期:
@@ -16,24 +19,20 @@
   %b 结束日期:
   = @train.end_date
 %p
-  %b Score:
+  %b 学    分:
   = @train.score
 %p
-  %b Certificate:
-  = @train.certificate
-%p
-  %b Comment:
-  = @train.comment
-%p
-  %b Registrar:
-  = @train.registrar.name
-%p
-  %b Period:
+  %b 学    时:
   = @train.period
 %p
-  %b Organizer:
-  = @train.organizer
+  %b 录 入 人:
+  = @train.registrar.name
+%p
+  %b 备    注:
+  = @train.comment
 
-= link_to 'Edit', edit_train_path(@train)
-\|
-= link_to 'Back', trains_path
+.well
+  .btn
+    = link_to '编辑', edit_train_path(@train)
+  .btn  
+    = link_to '返回', trains_path

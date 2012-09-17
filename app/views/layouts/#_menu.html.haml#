@@ -3,14 +3,13 @@
     %ul.nav.nav-tabs.nav-stacked
       %li.nav-header.alert-info 我的学分
       %li= link_to "我的学分", trains_path 
-      %li= link_to "修改密码", edit_user_password_path(current_user.id)
+      %li= link_to "修改密码", edit_user_path(current_user.id)
 
   - if can? :manage, Train
-    .row
-      %ul.nav.nav-tabs.nav-stacked
-        %li.nav-header.alert-info 学分管理
-        %li= link_to "学分登记", new_train_path
-        %li= link_to "登记信息", register_trains_path
+    %ul.nav.nav-tabs.nav-stacked
+      %li.nav-header.alert-info 学分管理
+      %li= link_to "学分登记", new_train_path
+      %li= link_to "登记", register_trains_path
     
   - if can? :manage, :all  
     .row

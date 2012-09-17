@@ -2,7 +2,6 @@
 %ul.nav.pull-right
   - if user_signed_in?
     %li 欢迎您，#{current_user.name}
-    %li= link_to '账号管理', edit_user_path(current_user.id)
     %li= link_to '注销', destroy_user_session_path, :method=>'delete'
   - else
     %li= link_to '登录', new_user_session_path

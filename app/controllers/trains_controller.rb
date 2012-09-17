@@ -60,7 +60,7 @@ class TrainsController < ApplicationController
 
     respond_to do |format|
       if @train.save
-        format.html { redirect_to @train, notice: 'Train was successfully created.' }
+        format.html { redirect_to @train, notice: '培训学分录入成功' }
         format.json { render json: @train, status: :created, location: @train }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class TrainsController < ApplicationController
 
     respond_to do |format|
       if @train.update_attributes(params[:train])
-        format.html { redirect_to @train, notice: 'Train was successfully updated.' }
+        format.html { redirect_to @train, notice: '培训学分更新成功' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -12,13 +12,13 @@
   %tbody    
     - @users.each do |user|
       %tr
-        %td= link_to user.name, user
+        %td= user.name
         %td= user.department.name
         %td= user.position.name
         %td= user.email
-        %td= link_to '查看', user
-        %td= link_to '编辑', edit_user_registration_path(user)
+        %td= link_to '查看', user_path(user)
+        %td= link_to '编辑'
         %td= link_to '删除', user, :confirm => '确定删除吗?', :method => :delete
         
         
-= link_to "用户注册", new_user_registration_path, class: "btn"      
+= link_to "用户注册", new_user_path, class: "btn"      

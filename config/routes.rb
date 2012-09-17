@@ -14,12 +14,13 @@ Tms::Application.routes.draw do
 
   resources :departments, :categories, :positions
 
-  authenticated :user, lambda {|u| u.has_role?("admin")} do
-    root :to => 'trains#index'
-  end
+  # authenticated :user, lambda {|u| u.has_role?("admin")} do
+  #   root :to => 'trains#index'
+  # end
 
   root :to => "home#index"
-  devise_for :users, controllers: {registrations: "users/registrations",
-                                   passwords: "users/passwords"}
-  resources :users, :only => [:show, :index, :edit, :update]
+
+  resources :users
+  devise_for :users
+
 end

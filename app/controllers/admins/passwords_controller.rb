@@ -1,4 +1,4 @@
-class Users::PasswordsController < ApplicationControllerb
+class Admins::PasswordsController < ApplicationControllerb
   skip_authorization_check
   skip_before_filter :require_no_authentication
   

@@ -199,6 +199,10 @@ zh:
   activerecord:
     errors:
       <<: *errors
+  # for cancan
+  unauthorized:
+    manage:
+      all: 无权限进行本项操作
 
   # for my own apps
   train_category : 培训类型

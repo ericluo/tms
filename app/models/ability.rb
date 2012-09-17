@@ -6,7 +6,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
       can :manage, :all
-    else
+    elsif user.has_role? "处室管理员"
       can :read, Train, trainee_id: user.id
       can :manage, Train, registrar_id: user.id
       can :create, Train
