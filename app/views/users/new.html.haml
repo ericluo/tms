@@ -1,15 +1,1 @@
-= simple_form_for(@user) do |f|
-  = f.error_notification
-  
-  .form-inputs
-    = f.input :name, required: true
-    = f.association :department, required: true
-    = f.input :email, required: true
-    = f.input :password, as: :password, required: true
-    = f.input :password_confirmation, as: :password, required: true
-    = f.input :position, collection: Position.all, label_method: :name, value_method: :id, required: true
-    = f.association :roles, as: :check_boxes, item_wrapper_class: 'inline'
-    
-  .form-actions
-    = f.button :submit, class: 'btn-primary'
--# = render "devise/shared/links"
+= render 'form'

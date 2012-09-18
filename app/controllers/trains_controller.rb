@@ -96,4 +96,11 @@ class TrainsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def approve
+    @trains = Train.where(status: nil)
+  end
+  
 end
+
+  

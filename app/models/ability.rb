@@ -10,8 +10,8 @@ class Ability
       can :read, Train, trainee_id: user.id
       can :manage, Train, registrar_id: user.id
       can :create, Train
-      can :update, User, id: user.id 
     end
+    can [:edit, :update_password], User
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

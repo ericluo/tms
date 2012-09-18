@@ -10,6 +10,11 @@ Tms::Application.routes.draw do
       get 'register'
       get 'search'
     end
+
+    member do
+      put 'approve'
+    end
+    
   end
 
   resources :departments, :categories, :positions
@@ -20,7 +25,12 @@ Tms::Application.routes.draw do
 
   root :to => "home#index"
 
-  resources :users
   devise_for :users
+
+  resources :users do
+    member do
+      put 'update_password'
+    end
+  end
 
 end

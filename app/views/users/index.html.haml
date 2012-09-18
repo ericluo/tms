@@ -17,8 +17,8 @@
         %td= user.position.name
         %td= user.email
         %td= link_to '查看', user_path(user)
-        %td= link_to '编辑'
-        %td= link_to '删除', user, :confirm => '确定删除吗?', :method => :delete
+        %td= link_to '编辑', edit_user_url(user)
+        %td= link_to '删除', user_url(user), :confirm => '确定删除吗?', :method => :delete
         
         
 = link_to "用户注册", new_user_path, class: "btn"      
