@@ -1,7 +1,7 @@
 # coding: utf-8
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource # except: [:update_password]
+  load_and_authorize_resource 
 
   add_breadcrumb("用户管理", "users_path")
   add_breadcrumb("用户注册", "new_admin_registration", only: [:new, :create])
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     end
     
     if @user.update_attributes(params[:user])
-      sign_in @user, bypass: true
+      # sign_in @user, bypass: true
       redirect_to users_url, notice: '更新用户成功'
     else
       render :edit

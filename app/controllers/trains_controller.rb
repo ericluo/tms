@@ -11,7 +11,7 @@ class TrainsController < ApplicationController
   # GET /trains
   # GET /trains.json
   def index
-    @trains = @trains.where(trainee_id: current_user.id)
+    binding.pry
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trains }
@@ -20,6 +20,10 @@ class TrainsController < ApplicationController
     end
   end
 
+  def search
+    @trains = Train.unapproved
+  end
+  
   def register
     @trains = @trains.where(registrar_id: current_user.id)
     respond_to do |format|
@@ -98,7 +102,11 @@ class TrainsController < ApplicationController
   end
 
   def approve
-    @trains = Train.where(status: nil)
+    @train = Train.find(params[:id])
+    @train.approved = params[:approved]
+
+    message = @train.save ? '培训学分审核成功' : '培训学分审核失败'
+    redirect_to search_trains_url, notice: message
   end
   
 end

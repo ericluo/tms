@@ -1,4 +1,3 @@
-= render 'export'
 %table#trains.table.table-striped.table-bordered.datatable
   %thead
     %tr
@@ -7,13 +6,10 @@
       %th 举办单位
       %th 开始日期
       %th 结束日期
+      %th 参训人员
       %th 学时
       %th 学分
-      %th 录入人
-      - if can? :update, Train
-        %th
-        %th
-        %th
+      %th 审核
 
   %tbody      
     - @trains.each do |train|
@@ -23,17 +19,10 @@
         %td= train.organizer
         %td= train.start_date
         %td= train.end_date
+        %td= train.trainee.name
         %td= train.period
         %td= train.score
-        %td= train.registrar.name
-        - if can? :update, Train
-          %td= link_to '查看', train
-          %td= link_to '编辑', edit_train_path(train)
-          %td= link_to '删除', train, :confirm => '确定删除吗?', :method => :delete
-
-%br
-
-- if can? :update, Train
-  .well
-    = link_to '学分登记', new_train_path, class: "btn btn-large"
+        %td
+          = link_to '通过', approve_train_path(train, approved: true), class: 'btn', method: :put
+          = link_to '打回', approve_train_path(train, approved: false), class: 'btn', method: :put
 
