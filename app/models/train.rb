@@ -44,6 +44,16 @@ class Train < ActiveRecord::Base
     end
   end
   
+  def status
+    if approved.nil?
+      "未审核"
+    elsif approved
+      "审核通过"
+    else
+      "审核未通过"
+    end
+  end
+  
   private
 
   # period must be integer,

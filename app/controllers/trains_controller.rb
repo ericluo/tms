@@ -11,7 +11,12 @@ class TrainsController < ApplicationController
   # GET /trains
   # GET /trains.json
   def index
-    binding.pry
+    if params[:registrar_id]
+      @trains = @trains.where(registrar_id: params[:registrar_id])
+    elsif params[:trainee_id]
+      @trains = @trains.where(trainee_id: params[:trainee_id])
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trains }

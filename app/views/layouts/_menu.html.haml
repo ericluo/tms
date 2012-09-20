@@ -1,33 +1,15 @@
 - if user_signed_in?
   .row
     %ul.nav.nav-tabs.nav-stacked
-      %li.nav-header.alert-info 我的学分
+      %li.nav-header.alert-info 学分管理
       %li= link_to "我的学分", trains_path(trainee_id: current_user.id)
-      %li= link_to "修改密码", edit_user_path(current_user.id)
-
-  - if can? :update, Train
-    .row
-      %ul.nav.nav-tabs.nav-stacked
-        %li.nav-header.alert-info 学分管理
+      - if can? :update, Train
         %li= link_to "学分登记", new_train_path
         %li= link_to "我的登记簿", trains_path(registrar_id: current_user.id)
-
-  - if can? :manage, Train      
-    .row
-      %ul.nav.nav-tabs.nav-stacked
-        %li.nav-header.alert-info 学分审核
+      - if can? :manage, Train      
         %li= link_to "学分审核", search_trains_path
-  
-  - if can? :manage, :all  
-    .row
-      %ul.nav.nav-tabs.nav-stacked
-        %li.nav-header.alert-info 系统管理    
-        %li= link_to "用户管理", users_path
-        %li= link_to "部门管理", departments_path
-        %li= link_to "职务管理", positions_path
-        %li= link_to "角色管理", roles_path
-        -# %li= link_to "培训类别管理", categories_path
 
+  -if can? :manage, Report    
     .row
       %ul.nav.nav-tabs.nav-stacked
         %l.nav-header.alert-info 统计分析
@@ -35,4 +17,16 @@
         %li= link_to "学分排名"
         %li= link_to "学分明细"
         %li= link_to "总体情况"
+
+  .row
+    %ul.nav.nav-tabs.nav-stacked
+      %li.nav-header.alert-info 系统管理    
+      %li= link_to "修改密码", edit_user_path(current_user.id)
+      - if can? :manage, :all  
+        %li= link_to "用户管理", users_path
+        %li= link_to "部门管理", departments_path
+        %li= link_to "职务管理", positions_path
+        %li= link_to "角色管理", roles_path
+        -# %li= link_to "培训类别管理", categories_path
+
 
