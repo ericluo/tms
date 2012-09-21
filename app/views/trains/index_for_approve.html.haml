@@ -25,6 +25,6 @@
         %td= train.score
         %td= train.registrar.name
         %td
-          = link_to '通过', approve_train_path(train, approved: true), class: 'btn', method: :put
+          = link_to '加锁', approve_train_path(train, approved: true), class: 'btn', method: :put
           = link_to '打回', approve_train_path(train, approved: false), class: 'btn', method: :put
 

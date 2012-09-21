@@ -2,12 +2,12 @@
   .row
     %ul.nav.nav-tabs.nav-stacked
       %li.nav-header.alert-info 学分管理
-      %li= link_to "我的学分", trains_path(trainee_id: current_user.id)
+      %li= link_to "我的学分", trains_path(v: :trainee)
       - if can? :update, Train
         %li= link_to "学分登记", new_train_path
-        %li= link_to "我的登记簿", trains_path(registrar_id: current_user.id)
+        %li= link_to "我的登记簿", trains_path(v: :registrar)
       - if can? :manage, Train      
-        %li= link_to "学分审核", search_trains_path
+        %li= link_to "学分审验", trains_path(v: :approve)
 
   -if can? :manage, Report    
     .row

@@ -34,6 +34,13 @@ class Train < ActiveRecord::Base
   #   else  0
   #   end
   # end
+  def registed_by?(user)
+    registrar_id == user.id
+  end
+
+  def owned_by?(user)
+    trainee_id == user.id
+  end
 
   def self.to_csv
     CSV.generate do |csv|
@@ -46,11 +53,11 @@ class Train < ActiveRecord::Base
   
   def status
     if approved.nil?
-      "未审核"
+      "待审"
     elsif approved
-      "审核通过"
+      "加锁"
     else
-      "审核未通过"
+      "打回"
     end
   end
   

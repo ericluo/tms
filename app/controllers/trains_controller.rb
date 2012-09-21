@@ -11,14 +11,21 @@ class TrainsController < ApplicationController
   # GET /trains
   # GET /trains.json
   def index
-    if params[:registrar_id]
-      @trains = @trains.where(registrar_id: params[:registrar_id])
-    elsif params[:trainee_id]
-      @trains = @trains.where(trainee_id: params[:trainee_id])
+    template = "index"
+    case params[:v]
+    when 'trainee'
+      @trains = @trains.owned_by(current_user).approved
+      template = "index_for_trainee"
+    when 'registrar'
+      @trains = @trains.registed_by(current_user)
+      template = "index_for_registrar"
+    when 'approve'
+      @trains = @trains.unapproved
+      template = "index_for_approve"
     end
     
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render template }
       format.json { render json: @trains }
       format.csv {send_data Train.to_csv}
       format.xls
@@ -82,6 +89,7 @@ class TrainsController < ApplicationController
   # PUT /trains/1.json
   def update
     @train = Train.find(params[:id])
+    @train.approved = nil
 
     respond_to do |format|
       if @train.update_attributes(params[:train])

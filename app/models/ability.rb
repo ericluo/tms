@@ -4,16 +4,21 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+    
+    can [:edit, :update_password], User
+    can :read, Train, trainee_id: user.id
+
     if user.has_role? "系统管理员"
       can :manage, :all
     elsif user.has_role? "审核员"
       can :manage, Train
     elsif user.has_role? "处室管理员"
-      can [:create, :read, :update, :destroy], Train, registrar_id: user.id
+      can :manage, Train do |train|
+        train.registed_by?(user)
+      end
+      cannot :approve, Train
     end
 
-    can [:edit, :update_password], User
-    can :read, Train, trainee_id: user.id
 
     # Define abilities for the passed in user here. For example:
     #

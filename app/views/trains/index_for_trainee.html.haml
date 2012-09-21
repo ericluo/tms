@@ -6,11 +6,9 @@
       %th 举办单位
       %th 开始日期
       %th 结束日期
-      %th 参训人员
       %th 学时
       %th 学分
-      %th 登记人员
-      %th 审核
+      %th 录入人
 
   %tbody      
     - @trains.each do |train|
@@ -20,11 +18,6 @@
         %td= train.organizer
         %td= train.start_date
         %td= train.end_date
-        %td= train.trainee.name
         %td= train.period
         %td= train.score
         %td= train.registrar.name
-        %td
-          = link_to '通过', approve_train_path(train, approved: true), class: 'btn', method: :put
-          = link_to '打回', approve_train_path(train, approved: false), class: 'btn', method: :put
-
