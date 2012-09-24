@@ -1,33 +1,35 @@
 %table#trains_for_approve.table.table-striped.table-bordered
   %thead
     %tr
+      %th 参训人员
       %th 项目名称
       %th 培训类型
       %th 举办单位
       %th 开始日期
       %th 结束日期
-      %th 参训人员
       %th 学时
       %th 学分
-      %th 登记人员
+      %th 状态
       %th 审核
 
   %tbody      
     - @trains.each do |train|
-      %tr
+      %tr{class: display_state(train).first}
+        %td= train.trainee.name
         %td= train.name
         %td= train.category.root.name
         %td= train.organizer
         %td= train.start_date
         %td= train.end_date
-        %td= train.trainee.name
         %td= train.period
         %td= train.score
-        %td= train.registrar.name
         %td
-          = link_to approve_train_path(train, approved: true), class: 'btn btn-success', method: :put do
-            %i.icon-ok.icon-white
-            通过
+          %span{class: "label label-#{display_state(train).first}"}= display_state(train).last
+        %td
+          - unless train.approved?
+            = link_to approve_train_path(train, approved: true), class: 'btn btn-success', method: :put do
+              %i.icon-ok.icon-white
+              通过
           = link_to approve_train_path(train, approved: false), class: 'btn btn-danger', method: :put do
             %i.icon-remove.icon-white
-            打回
+            重报

@@ -57,7 +57,7 @@ class Train < ActiveRecord::Base
     elsif approved
       "加锁"
     else
-      "打回"
+      "重报"
     end
   end
   

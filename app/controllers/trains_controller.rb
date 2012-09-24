@@ -20,7 +20,6 @@ class TrainsController < ApplicationController
       @trains = @trains.registed_by(current_user)
       template = "index_for_registrar"
     when 'approve'
-      @trains = @trains.unapproved
       template = "index_for_approve"
     end
     
