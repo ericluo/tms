@@ -1,18 +1,18 @@
-%table#departments.table.table-striped.table-bordered.datatable
+%table#tdepartments.table.table-striped.table-bordered
   %thead
     %tr
       %th 部门名称
       %th 排列次序
-      %th
-      %th
+      %th 操作
 
   %tbody      
     - @departments.each do |department|
       %tr
         %td= department.name
         %td= department.order
-        %td= link_to '编辑', edit_department_path(department)
-        %td= link_to '删除', department, :confirm => '确定删除吗？', :method => :delete
+        %td
+          = link_to '编辑', edit_department_path(department)
+          = link_to '删除', department, :confirm => '确定删除吗？', :method => :delete
 
   -# = will_paginate @departments    
 %hr  

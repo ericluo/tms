@@ -1,4 +1,4 @@
-%table#trains.table.table-striped.table-bordered.datatable
+%table#trains_for_registrar.table.table-striped.table-bordered
   %thead
     %tr
       %th 项目名称
@@ -10,10 +10,7 @@
       %th 学分
       %th 参训人员
       %th 状态
-      - if can? :update, Train
-        %th
-        %th
-        %th
+      %th 操作
 
   %tbody      
     - @trains.each do |train|
@@ -26,11 +23,19 @@
         %td= train.period
         %td= train.score
         %td= train.trainee.name
-        %td= train.status
-        - if can? :update, Train
-          %td= link_to '查看', train
-          %td= link_to_unless train.approved?, '编辑', edit_train_path(train)
-          %td= link_to_unless train.approved?, '删除', train, :confirm => '确定删除吗?', :method => :delete
+        %td.center
+          - status_tag(train)
+        %td        
+          = link_to train, class: "btn btn-success" do
+            %i.icon-zoom-in.icon-white
+            查看            
+          - unless train.approved?
+            = link_to edit_train_path(train), class: "btn btn-info" do
+              %i.icon-edit.icon-white
+              编辑              
+            = link_to train, confirm: '确定删除吗?', method: :delete, class: "btn btn-danger" do
+              %i.icon-trash.icon-white
+              删除
 
 %br
 

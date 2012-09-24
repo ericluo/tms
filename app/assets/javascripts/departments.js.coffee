@@ -4,4 +4,4 @@
 
 jQuery ->
   options = $.extend {"aaSorting": [[1, "asc"]]}, dt_options
-  $('#departments').dataTable(options)
+  $('#tdepartments').dataTable(options)

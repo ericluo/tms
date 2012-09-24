@@ -11,10 +11,6 @@
       %th 学分
       %th 录入人
       %th 状态
-      - if can? :update, Train
-        %th
-        %th
-        %th
 
   %tbody      
     - @trains.each do |train|
@@ -28,10 +24,6 @@
         %td= train.score
         %td= train.registrar.name
         %td= train.status
-        - if can? :update, Train
-          %td= link_to '查看', train
-          %td= link_to_unless train.approved?, '编辑', edit_train_path(train)
-          %td= link_to_unless train.approved?, '删除', train, :confirm => '确定删除吗?', :method => :delete
 
 %br
 

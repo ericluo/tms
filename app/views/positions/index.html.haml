@@ -1,18 +1,18 @@
-%table#positions.table.table-striped.table-bordered.datatable
+%table#positions.table.table-striped.table-bordered
   %thead
     %tr
       %th 职位名称
       %th 职位排序
-      %th
-      %th
+      %th 操作
 
   %tbody      
     - @positions.each do |position|
       %tr
         %td= position.name
         %td= position.order
-        %td= link_to '编辑', edit_position_path(position)
-        %td= link_to '删除', position, :confirm => '确定删除吗？', :method => :delete
+        %td
+          = link_to '编辑', edit_position_path(position)
+          = link_to '删除', position, :confirm => '确定删除吗？', :method => :delete
 
 %hr  
 .well  
