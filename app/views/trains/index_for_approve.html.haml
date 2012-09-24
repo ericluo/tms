@@ -26,10 +26,18 @@
         %td
           %span{class: "label label-#{display_state(train).first}"}= display_state(train).last
         %td
-          - unless train.approved?
+          - if train.approved.nil?
             = link_to approve_train_path(train, approved: true), class: 'btn btn-success', method: :put do
               %i.icon-ok.icon-white
               通过
-          = link_to approve_train_path(train, approved: false), class: 'btn btn-danger', method: :put do
-            %i.icon-remove.icon-white
-            重报
+            = link_to approve_train_path(train, approved: false), class: 'btn btn-danger', method: :put do
+              %i.icon-remove.icon-white
+              重报
+          - elsif train.approved?
+            = link_to approve_train_path(train, approved: false), class: 'btn btn-danger', method: :put do
+              %i.icon-remove.icon-white
+              重报
+          - else              
+            = link_to approve_train_path(train, approved: true), class: 'btn btn-success', method: :put do
+              %i.icon-ok.icon-white
+              通过
