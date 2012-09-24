@@ -2,12 +2,24 @@
   .row
     %ul.nav.nav-tabs.nav-stacked
       %li.nav-header.alert-info 学分管理
-      %li= link_to "我的学分", trains_path(v: :trainee)
+      %li
+        = link_to trains_path(v: :trainee) do
+          %i.icon-eye-open
+          我的学分
       - if can? :update, Train
-        %li= link_to "学分登记", new_train_path
-        %li= link_to "我的登记簿", trains_path(v: :registrar)
+        %li
+          = link_to new_train_path do
+            %i.icon-edit
+            学分登记
+        %li
+          = link_to trains_path(v: :registrar) do
+            %i.icon-list-alt
+            我的登记簿 
       - if can? :manage, Train      
-        %li= link_to "学分审验", trains_path(v: :approve)
+        %li
+          = link_to trains_path(v: :approve) do
+            %i.icon-check
+            学分审验
 
   -if can? :manage, Report    
     .row
@@ -21,12 +33,23 @@
   .row
     %ul.nav.nav-tabs.nav-stacked
       %li.nav-header.alert-info 系统管理    
-      %li= link_to "修改密码", edit_user_path(current_user.id)
+      %li
+        = link_to edit_user_path(current_user.id) do
+          %i.icon-tint
+          修改密码
       - if can? :manage, :all  
-        %li= link_to "用户管理", users_path
-        %li= link_to "部门管理", departments_path
-        %li= link_to "职务管理", positions_path
-        %li= link_to "角色管理", roles_path
+        %li
+          = link_to users_path do
+            %i.icon-user
+            用户管理
+        %li
+          = link_to departments_path do
+            %i.icon-wrench
+            部门管理
+        %li
+          = link_to positions_path do
+            %i.icon-asterisk
+            职务管理
+
+        -# %li= link_to "角色管理", roles_path
         -# %li= link_to "培训类别管理", categories_path
-
-

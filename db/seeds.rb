@@ -23,7 +23,7 @@ user = User.create!(:name => '罗文波', :email => 'user@example.com',
                     :password => 'please', :password_confirmation => 'please',
                     :department_id => 2, :position_id => 5)
 puts 'New user created: ' << user.name
-user.add_role "admin"
+user.add_role "系统管理员"
 
 user2 = User.create!(:name => '张三', :email => 'user1@example.com',
                      :password => 'please', :password_confirmation => 'please',
