@@ -31,19 +31,19 @@ class TrainsController < ApplicationController
     end
   end
 
-  def search
-    @trains = Train.unapproved
-  end
+  # def search
+  #   @trains = Train.unapproved
+  # end
   
-  def register
-    @trains = @trains.where(registrar_id: current_user.id)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @trains }
-      format.csv {send_data Train.to_csv}
-      format.xls
-    end
-  end
+  # def register
+  #   @trains = @trains.where(registrar_id: current_user.id)
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.json { render json: @trains }
+  #     format.csv {send_data Train.to_csv}
+  #     format.xls
+  #   end
+  # end
 
   # GET /trains/1
   # GET /trains/1.json
@@ -118,7 +118,7 @@ class TrainsController < ApplicationController
     @train.approved = params[:approved]
 
     message = @train.save ? '培训学分审核成功' : '培训学分审核失败'
-    redirect_to search_trains_url, notice: message
+    redirect_to trains_path(v: "approve"), notice: message
   end
   
 end

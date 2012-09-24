@@ -14,7 +14,7 @@
 
   %tbody      
     - @trains.each do |train|
-      %tr
+      %tr{class: display_state(train).first}
         %td= train.name
         %td= train.category.root.name
         %td= train.organizer
@@ -23,8 +23,8 @@
         %td= train.period
         %td= train.score
         %td= train.trainee.name
-        %td.center
-          - status_tag(train)
+        %td
+          %span{class: "label label-#{display_state(train).first}"}= display_state(train).last
         %td        
           = link_to train, class: "btn btn-success" do
             %i.icon-zoom-in.icon-white
