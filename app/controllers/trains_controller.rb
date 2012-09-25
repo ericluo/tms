@@ -2,11 +2,6 @@
 class TrainsController < ApplicationController
 
   load_and_authorize_resource 
-  add_breadcrumb("学分管理", "trains_path")
-  add_breadcrumb("我的学分", "trains_path", only: [:index])
-  add_breadcrumb("我的登记簿", "register_trains_path", only: [:register])
-  add_breadcrumb("学分登记", '', only: [:new, :create])
-  add_breadcrumb("信息修订", '', only: [:edit, :update])
   
   # GET /trains
   # GET /trains.json
@@ -16,11 +11,14 @@ class TrainsController < ApplicationController
     when 'trainee'
       @trains = @trains.owned_by(current_user).approved
       template = "index_for_trainee"
+      add_breadcrumb("我的学分", trains_path(v: 'trainee'))
     when 'registrar'
       @trains = @trains.registed_by(current_user)
       template = "index_for_registrar"
+      add_breadcrumb("我的登记簿", trains_path(v: 'registrar'))
     when 'approve'
       template = "index_for_approve"
+      add_breadcrumb('学分审验', trains_path(v: 'approve'))
     end
     
     respond_to do |format|
@@ -58,6 +56,7 @@ class TrainsController < ApplicationController
   # GET /trains/new
   # GET /trains/new.json
   def new
+    add_breadcrumb("学分登记", new_train_path)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @train }
@@ -66,6 +65,7 @@ class TrainsController < ApplicationController
 
   # GET /trains/1/edit
   def edit
+    add_breadcrumb("信息修订", edit_train_path(@train))
   end
 
   # POST /trains

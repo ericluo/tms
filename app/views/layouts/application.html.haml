@@ -19,7 +19,7 @@
     #main{role: "main", class: "#{controller.controller_name}" }
       .container
         .row
-          #menu.span2
+          #menu.span2{"data-spy" => "affix", "data-offset-top" => "200"}
             = render 'layouts/menu'
           .span10
             = render 'layouts/path'

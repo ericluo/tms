@@ -5,7 +5,11 @@ class Train < ActiveRecord::Base
   validates :start_date, :end_date, format: {with: /\d{4}-\d{2}-\d{2}/, message: "数据格式必须为：YYYY-MM-DD"}
 
   validates_each :category_id do |record, attr, value|
-    record.errors.add(attr, "请选择明确的培训类别") unless Category.find(value).leaf?
+    record.errors.add(attr, "请选择对应的培训类别子项") unless Category.find(value).leaf?
+  end
+
+  validate do
+    errors.add(:start_date, "开始日期必须在结束日期之前") unless start_date < end_date
   end
 
   belongs_to :category
