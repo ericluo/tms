@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles, join_table: :users_roles
   accepts_nested_attributes_for :roles
+
+  scope :colleagues, lambda {|user| where('department_id == ?', user.department.id)}
   
   def total_score
     trains.sum(&:score)

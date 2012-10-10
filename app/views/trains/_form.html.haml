@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :category_id, required: true do
       = f.select :category_id, nested_set_options(Category, @category){|i| "#{'--' * i.level} #{i.name}"}
-    = f.association :trainee, include_blank: false, required: true
+    = f.association :trainee, required: true, collection: User.colleagues(current_user)
     = f.input :name, required: true
     = f.input :start_date, as: :string, placeholder: '格式: 2012-08-21', required: true
     = f.input :end_date, as: :string, placeholder: '格式: 2012-08-21', required: true
