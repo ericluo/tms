@@ -2,10 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :report_definition, required: true
+    = f.input :type, collection: %w[学分排名 学分明细 总体情况], required: true
     = f.input :start_date, as: :string, required: true
     = f.input :end_date, as: :string, required: true
-    = f.input :title
 
   .form-actions
     = f.button :submit, class: 'btn-primary'

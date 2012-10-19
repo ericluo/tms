@@ -1,55 +1,46 @@
 - if user_signed_in?
   .row
     %ul.nav.nav-tabs.nav-stacked
-      %li.nav-header.alert-info 学分管理
+      %li.nav-header.alert-info
+        %i.icon-edit
+        学分管理
       %li
-        = link_to trains_path(v: :trainee) do
-          %i.icon-eye-open
-          我的学分
+        = link_to "我的学分", trains_path(v: :trainee)
       - if can? :update, Train
         %li
-          = link_to new_train_path do
-            %i.icon-edit
-            学分登记
+          = link_to "学分登记", new_train_path
         %li
-          = link_to trains_path(v: :registrar) do
-            %i.icon-list-alt
-            我的登记簿 
+          = link_to "我的登记簿", trains_path(v: :registrar) 
       - if can? :manage, Train      
         %li
-          = link_to trains_path(v: :approve) do
-            %i.icon-check
-            学分审验
+          = link_to "学分审验", trains_path(v: :approve)
 
   -if can? :manage, Report    
     .row
       %ul.nav.nav-tabs.nav-stacked
-        %li.nav-header.alert-info 统计分析
-        %li= link_to '生成报表', new_report_path
-        %li= link_to "学分排名"
+        %li.nav-header.alert-info 
+          %i.icon-list-alt
+          统计分析
+        %li= link_to '定制报表', new_report_path
+        %li= link_to '年度报表', reports_path
+        %li= link_to "学分排名" 
         %li= link_to "学分明细"
         %li= link_to "总体情况"
 
   .row
     %ul.nav.nav-tabs.nav-stacked
-      %li.nav-header.alert-info 系统管理    
+      %li.nav-header.alert-info
+        %i.icon-wrench
+        系统管理    
       %li
-        = link_to edit_user_path(current_user.id) do
-          %i.icon-tint
-          修改密码
+        = link_to "修改密码", edit_user_path(current_user.id)
       - if can? :manage, :all  
         %li
-          = link_to users_path do
-            %i.icon-user
-            用户管理
+          = link_to "用户管理", users_path 
         %li
-          = link_to departments_path do
-            %i.icon-wrench
-            部门管理
+          = link_to "部门管理", departments_path 
         %li
-          = link_to positions_path do
-            %i.icon-asterisk
-            职务管理
+          = link_to "职务管理", positions_path
 
         -# %li= link_to "角色管理", roles_path
         -# %li= link_to "培训类别管理", categories_path

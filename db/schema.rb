@@ -35,20 +35,17 @@ ActiveRecord::Schema.define(:version => 20120918062344) do
   end
 
   create_table "report_definitions", :force => true do |t|
-    t.string   "name"
-    t.text     "template"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "name"
+    t.string "template"
   end
 
   create_table "reports", :force => true do |t|
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "title"
+    t.string   "type"
     t.text     "content"
-    t.integer  "report_definition_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|

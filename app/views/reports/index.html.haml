@@ -1,25 +1,22 @@
-%h1 Listing reports
-
-%table
-  %tr
-    %th Start date
-    %th End date
-    %th Title
-    %th Content
-    %th
-    %th
-    %th
-
-  - @reports.each do |report|
+%table#treports.table.table-striped.table-bordered
+  %thead
     %tr
-      %td= report.start_date
-      %td= report.end_date
-      %td= report.title
-      %td= report.content
-      %td= link_to 'Show', report
-      %td= link_to 'Edit', edit_report_path(report)
-      %td= link_to 'Destroy', report, :confirm => 'Are you sure?', :method => :delete
+      %th 开始日期
+      %th 结束日期
+      %th 报表类别
+      %th
+      %th
+
+  %tbody      
+    - @reports.each do |report|
+      %tr
+        %td= report.start_date
+        %td= report.end_date
+        %td= report.title
+        %td= link_to '下载', report
+        %td= link_to '删除', report, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Report', new_report_path
+.well
+  = link_to '新增报表', new_report_path, class: "btn btn-large"

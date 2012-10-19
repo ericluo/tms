@@ -48,6 +48,14 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(params[:report])
 
+    template_file = case @report.type
+                    when "学分排名" then "score_rank.xls.erb"
+                    when "学分明细" then ""
+                    when "总体情况" then ""
+                    end
+    rhtml = ERB.new(File.read(template_file))
+    @report.content = rhtml.run(binding)
+    
     respond_to do |format|
       if @report.save
         format.html { redirect_to @report, notice: 'Report was successfully created.' }

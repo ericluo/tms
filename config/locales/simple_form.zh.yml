@@ -55,7 +55,6 @@ zh:
         organizer   : 举办单位
         comment     : 备注
       report:
-        report_definition: 报表类型
         start_date : 起始日期
         end_date   : 终止日期
-        title      : 报表标题
+        type       : 报表类型
