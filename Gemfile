@@ -1,6 +1,5 @@
 source 'http://ruby.taobao.org'
 gem 'rails', '3.2.8'
-gem 'sqlite3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -15,10 +14,14 @@ group :development do
   gem 'pry-nav'
 
   gem 'RedCloth'
+  gem 'sqlite3'
 end
 
 gem 'awesome_nested_set'
-gem 'mysql'
+
+group :production do
+  # gem 'mysql'
+end
 
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1", :group => [:development, :test]
