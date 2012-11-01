@@ -57,4 +57,4 @@ zh:
       report:
         start_date : 起始日期
         end_date   : 终止日期
-        type       : 报表类型
+        category   : 报表类型

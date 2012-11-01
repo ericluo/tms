@@ -23,7 +23,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @report }
+      format.xls {send_data @report.content, filename: report_file_name(@report) }
     end
   end
 
@@ -48,21 +48,20 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(params[:report])
 
-    template_file = case @report.type
+    template_file = case @report.category
                     when "学分排名" then "score_rank.xls.erb"
-                    when "学分明细" then ""
-                    when "总体情况" then ""
+                    when "学分明细" then "score_detail.xls.erb"
                     end
-    rhtml = ERB.new(File.read(template_file))
-    @report.content = rhtml.run(binding)
+    rhtml = ERB.new(File.read(Rails.root.join("app/views/reports/#{template_file}")))
+    @trains = Train.all
+    @users = User.all
+    @report.content = rhtml.result(binding)
     
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
-        format.json { render json: @report, status: :created, location: @report }
+        format.html { redirect_to reports_url, notice: '新增报表成功' }
       else
         format.html { render action: "new" }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -94,4 +93,9 @@ class ReportsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def report_file_name(report)
+    "#{report.id}_#{report.start_date}_#{report.category}.xls"
+  end
+
 end

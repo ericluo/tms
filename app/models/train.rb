@@ -9,7 +9,7 @@ class Train < ActiveRecord::Base
   end
 
   validate do
-    errors.add(:start_date, "开始日期必须在结束日期之前") unless start_date < end_date
+    errors.add(:start_date, "开始日期必须在结束日期之前") if start_date > end_date
   end
 
   belongs_to :category

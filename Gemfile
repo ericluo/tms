@@ -18,6 +18,7 @@ group :development do
 end
 
 gem 'awesome_nested_set'
+gem 'mysql'
 
 gem 'jquery-rails'
 gem "thin", ">= 1.4.1", :group => [:development, :test]

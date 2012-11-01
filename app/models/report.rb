@@ -3,7 +3,10 @@ class Report < ActiveRecord::Base
   validates :start_date, :end_date, presence: true
   
   attr_accessible :content, :end_date, :start_date, :title
-  attr_accessible :report_definition_id
+  attr_accessible :category
 
-  belongs_to :report_definition
+  def score_rank
+
+  end
+  
 end

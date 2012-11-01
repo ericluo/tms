@@ -29,65 +29,53 @@
       <NumberFormat/>
       <Protection/>
     </Style>
-    <Style ss:ID="s22">
+    <Style ss:ID="s21">
       <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
-      <Font ss:FontName="宋体" x:CharSet="134" ss:Size="18" ss:Bold="1"/>
     </Style>
-    <Style ss:ID="s24">
+    <Style ss:ID="s23">
       <Alignment ss:Horizontal="Right" ss:Vertical="Center"/>
     </Style>
     <Style ss:ID="s25">
       <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
       <Font ss:FontName="宋体" x:CharSet="134" ss:Size="12" ss:Bold="1"/>
     </Style>
-    <Style ss:ID="s26">
-      <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+    <Style ss:ID="s28">
+      <Alignment ss:Horizontal="Left" ss:Vertical="Center"/>
     </Style>
     <Style ss:ID="s30">
-      <Alignment ss:Vertical="Center"/>
+      <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+      <Font ss:FontName="宋体" x:CharSet="134" ss:Size="18" ss:Bold="1"/>
     </Style>
   </Styles>
   <Worksheet ss:Name="Sheet1">
-    <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+    <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="6" x:FullColumns="1"
            x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="14.25">
-      <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="133.5"/>
-      <Column ss:AutoFitWidth="0" ss:Width="90" ss:Span="1"/>
-      <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="99.75"/>
-      <Column ss:AutoFitWidth="0" ss:Width="62.25"/>
-      <Row ss:AutoFitHeight="0" ss:Height="44.25">
-        <Cell ss:MergeAcross="5" ss:StyleID="s22"><Data ss:Type="String">湖北银监局干部教育培训排名表</Data></Cell>
+      <Row ss:AutoFitHeight="0" ss:Height="29.25">
+        <Cell ss:MergeAcross="7" ss:StyleID="s30"><Data ss:Type="String">湖北银监局个人学分情况统计</Data></Cell>
       </Row>
       <Row ss:AutoFitHeight="0" ss:Height="29.25">
-        <Cell ss:Index="2" ss:MergeAcross="4" ss:StyleID="s24">
-          <Data ss:Type="String"> 2012-01-01 ~ 2012-12-31 </Data>
+        <Cell ss:MergeAcross="7" ss:StyleID="s23">
+          <Data ss:Type="String">
+            <%= "#{@report.start_date} ~ #{@report.end_date}" %>
+          </Data>
         </Cell>
       </Row>
-      <Row ss:AutoFitHeight="0" ss:Height="27">
-        <Cell ss:StyleID="s25"><Data ss:Type="String">序号</Data></Cell>
-        <Cell ss:StyleID="s25"><Data ss:Type="String">部门</Data></Cell>
-        <Cell ss:StyleID="s25"><Data ss:Type="String">职务</Data></Cell>
+      <Row ss:AutoFitHeight="0" ss:Height="24.75">
         <Cell ss:StyleID="s25"><Data ss:Type="String">姓名</Data></Cell>
-        <Cell ss:StyleID="s25"><Data ss:Type="String">学分</Data></Cell>
+        <Cell ss:StyleID="s25"><Data ss:Type="String"><%= current_user.name %></Data></Cell>
+        <Cell ss:StyleID="s25"><Data ss:Type="String">累计学分</Data></Cell>
+        <Cell ss:StyleID="s25"><Data ss:Type="String"><%= current_user.total_score %></Data></Cell>
+        <Cell ss:StyleID="s25"><Data ss:Type="String">累计学时</Data></Cell>
+        <Cell ss:StyleID="s25"><Data ss:Type="String"><%= current_user.total_period %></Data></Cell>
         <Cell ss:StyleID="s25"><Data ss:Type="String">排名</Data></Cell>
+        <Cell ss:StyleID="s25"/>
       </Row>
-      <% @users.each_with_index do |u, i| %>
-        <Row ss:AutoFitHeight="0" ss:Height="27">
-          <Cell ss:Index="2" ss:StyleID="s26">
-            <Data ss:Type="Number"><%= i + 1 %></Data>
+      <% @trains.each_with_index do |t, i| %>
+        <Row ss:AutoFitHeight="0" ss:Height="24.75">
+          <Cell ss:StyleID="s21"><Data ss:Type="Number"><%= i + 1 %></Data></Cell>
+          <Cell ss:MergeAcross="6" ss:StyleID="s28">
+            <Data ss:Type="String"><%= "#{t.start_date}--#{t.end_date} #{t.name}" %></Data>
           </Cell>
-          <Cell ss:StyleID="s30">
-            <Data ss:Type="String"><%= u.department %></Data>
-          </Cell>
-          <Cell ss:StyleID="s30">
-            <Data ss:Type="String"><%= u.position %></Data>
-          </Cell>
-          <Cell ss:StyleID="s30">
-            <Data ss:Type="String"><%= u.name %></Data>
-          </Cell>
-          <Cell ss:StyleID="s30">
-            <Data ss:Type="Number"><%= u.total_score %></Data>
-          </Cell>
-          <Cell ss:StyleID="s30"/>
         </Row>
       <% end %>
     </Table>
@@ -95,7 +83,6 @@
       <PageSetup>
         <Layout x:Orientation="Landscape"/>
       </PageSetup>
-      <Unsynced/>
       <Print>
         <ValidPrinterInfo/>
         <PaperSizeIndex>9</PaperSizeIndex>
@@ -106,8 +93,8 @@
       <Panes>
         <Pane>
           <Number>3</Number>
-          <ActiveRow>6</ActiveRow>
-          <ActiveCol>3</ActiveCol>
+          <ActiveRow>13</ActiveRow>
+          <ActiveCol>8</ActiveCol>
         </Pane>
       </Panes>
       <ProtectObjects>False</ProtectObjects>
@@ -118,7 +105,6 @@
     <Table ss:ExpandedColumnCount="0" ss:ExpandedRowCount="0" x:FullColumns="1"
            x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="14.25"/>
     <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-      <Unsynced/>
       <ProtectObjects>False</ProtectObjects>
       <ProtectScenarios>False</ProtectScenarios>
     </WorksheetOptions>
@@ -127,7 +113,6 @@
     <Table ss:ExpandedColumnCount="0" ss:ExpandedRowCount="0" x:FullColumns="1"
            x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="14.25"/>
     <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-      <Unsynced/>
       <ProtectObjects>False</ProtectObjects>
       <ProtectScenarios>False</ProtectScenarios>
     </WorksheetOptions>

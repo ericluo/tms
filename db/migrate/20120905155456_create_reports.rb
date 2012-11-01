@@ -3,7 +3,7 @@ class CreateReports < ActiveRecord::Migration
     create_table :reports do |t|
       t.date :start_date
       t.date :end_date
-      t.string :type
+      t.string :category
       t.text :content
 
       t.timestamps

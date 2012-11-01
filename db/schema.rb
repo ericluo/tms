@@ -34,15 +34,10 @@ ActiveRecord::Schema.define(:version => 20120918062344) do
     t.integer "order"
   end
 
-  create_table "report_definitions", :force => true do |t|
-    t.string "name"
-    t.string "template"
-  end
-
   create_table "reports", :force => true do |t|
     t.date     "start_date"
     t.date     "end_date"
-    t.string   "type"
+    t.string   "category"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
