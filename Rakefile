@@ -9,7 +9,6 @@ Tms::Application.load_tasks
 begin
   require 'vlad'
   Vlad.load :scm => :git
-rescue
-  #
+rescue LoadError => e
+  puts "Unable to load vlad #{e}"
 end
-
