@@ -59,7 +59,3 @@ end
   populate_category(l, injobs[2], s)
 end
 
-puts 'SETTING UP DEFAULT REPORT DEFINITION'
-[%w[学分排名 score_rank], %w[学分明细 score_detail], %w[总体情况 general_info]].each do |n, t|
-   ReportDefinition.create!(name: n, template: t)
-end
