@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   add_breadcrumb("用户编辑", "edit_admin_registration", only: [:edit, :update])
 
   def index
-    binding.remote_pry
   end
 
   def new
