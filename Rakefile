@@ -6,11 +6,3 @@ require File.expand_path('../config/application', __FILE__)
 
 Tms::Application.load_tasks
 
-begin
-  require 'vlad'
-  require 'vlad-extras'
-  Vlad.load :scm => :git
-rescue LoadError => e
-  puts "Unable to load vlad #{e}"
-end
-
