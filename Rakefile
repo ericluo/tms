@@ -17,7 +17,6 @@ desc "Full deployment cycle"
 task "vlad:deploy" => %w[
   vlad:update
   vlad:migrate
-  vlad:reset_session
   vlad:start
   vlad:cleanup
 ]

@@ -1,3 +1,5 @@
+require 'bundler/vlad'
+
 set :application, "sms"
 set :domain, "192.168.1.123"
 set :sudo_password, "snow327"

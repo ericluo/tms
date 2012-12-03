@@ -20,8 +20,8 @@ class Train < ActiveRecord::Base
   attr_accessible :start_date, :end_date, :period
   attr_accessible :trainee_id, :registrar_id, :category_id
 
-  scope :owned_by, lambda {|user| where('trainee_id == ?', user.id)}
-  scope :registed_by, lambda {|user| where('registrar_id == ?', user.id)}
+  scope :owned_by, lambda {|user| where('trainee_id = ?', user.id)}
+  scope :registed_by, lambda {|user| where('registrar_id = ?', user.id)}
   
   scope :unapproved, where(approved: nil)
   scope :approved, where(approved: true)
