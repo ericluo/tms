@@ -23,6 +23,9 @@ gem 'vlad', :require => false
 gem 'vlad-git', :require => false
 gem 'vlad-extras', :require => false
 
+gem 'capistrano'
+gem 'rvm-capistrano'
+
 group :production do
   gem 'mysql2'
 end
