@@ -6,3 +6,12 @@ set :sudo_password, "snow327"
 set :deploy_to, "/home/eric/workspace/sms"
 set :repository, 'https://github.com/ericluo/tms.git'
 set :revision, "origin/sti"
+
+desc "Full deployment cycle"
+task "vlad:deploy" => %w[
+  vlad:update
+  vlad:bundle:install
+  vlad:migrate
+  vlad:start
+  vlad:cleanup
+]

@@ -19,8 +19,10 @@ end
 
 gem 'awesome_nested_set'
 
-gem 'vlad'
-gem 'vlad-git'
+gem 'vlad', :require => false
+gem 'vlad-git', :require => false
+gem 'vlad-extras', :require => false
+
 group :production do
   gem 'mysql2'
 end

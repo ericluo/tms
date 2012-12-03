@@ -8,15 +8,9 @@ Tms::Application.load_tasks
 
 begin
   require 'vlad'
+  require 'vlad-extras'
   Vlad.load :scm => :git
 rescue LoadError => e
   puts "Unable to load vlad #{e}"
 end
 
-desc "Full deployment cycle"
-task "vlad:deploy" => %w[
-  vlad:update
-  vlad:migrate
-  vlad:start
-  vlad:cleanup
-]
