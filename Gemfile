@@ -19,10 +19,6 @@ end
 
 gem 'awesome_nested_set'
 
-gem 'vlad', :require => false
-gem 'vlad-git', :require => false
-gem 'vlad-extras', :require => false
-
 gem 'capistrano'
 gem 'rvm-capistrano'
 
