@@ -55,6 +55,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    redirect_to users_url, notice: '删除用户成功'
+
+  end
+  
   def show
     @user = User.find(params[:id])
   end

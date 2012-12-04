@@ -17,7 +17,7 @@
         %td
           = link_to '查看', user_path(user)
           = link_to '编辑', edit_user_url(user)
-          = link_to '删除', user_url(user), :confirm => '确定删除吗?', :method => :delete
+          = link_to '删除', user_url(user), :confirm => '删除用户将同时删除该用户的所有学分信息，确定删除吗?', :method => :delete
         
-        
-= link_to "用户注册", new_user_path, class: "btn"      
+.well      
+  = link_to "用户注册", new_user_path, class: "btn"      
