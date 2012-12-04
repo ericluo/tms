@@ -57,6 +57,13 @@ class TrainsController < ApplicationController
   # GET /trains/new.json
   def new
     add_breadcrumb("学分登记", new_train_path)
+
+    if current_user.has_role?("系统管理员")
+      @trainee = User.all
+    else
+      @trainee = current_user.colleage
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @train }

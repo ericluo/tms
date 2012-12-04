@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :roles
 
   scope :colleagues, lambda {|user| where('department_id = ?', user.department.id)}
+
+  def colleage
+    User.where(department_id: department.id)
+  end
   
   def total_score
     trains.sum(&:score)
