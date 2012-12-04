@@ -7,7 +7,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 puts 'SETTING UP DEFAULT DEPARTMENT'
-DEPS = %w[办公室 政策法规处 非现场监管一处 非现场监管二处 现场检查一处
+DEPS = %w[局领导 办公室 政策法规处 非现场监管一处 非现场监管二处 现场检查一处
           现场检查二处 城市商业银行监管处 非银行机构监管处 合作处 外资处
           直管处 统计处 财务处 人事处 监察室 机关党委 后勤服务中心 案件办]
 Department.delete_all
@@ -17,20 +17,8 @@ puts "SETTING UP DEFAULT POSITION"
 Position.delete_all
 %w[处长 正处级 副处长 副处级 科及科以下].each_with_index{|p,i| Position.create!(name: p, order: i +1)}
 
-puts 'SETTING UP DEFAULT USER LOGIN'
-User.delete_all
-user = User.create!(:name => '罗文波', :email => 'user@example.com',
-                    :password => 'please', :password_confirmation => 'please',
-                    :department_id => 2, :position_id => 5)
-puts 'New user created: ' << user.name
-user.add_role "系统管理员"
-
-user2 = User.create!(:name => '张三', :email => 'user1@example.com',
-                     :password => 'please', :password_confirmation => 'please',
-                     :department_id => 5, :position_id => 1)
-puts 'New user created: ' << user2.name
-
 puts 'SETTING UP DEFAULT ROLE'
+Role.delete_all
 %w[系统管理员 审核员 处室管理员].each {|r| Role.create!(name: r)}
 def populate_category(name, parent, score = '')
   c = Category.new(name: name)
@@ -38,6 +26,38 @@ def populate_category(name, parent, score = '')
   c.scoring_rule = score
   c.save!
   c
+end
+
+puts 'SETTING UP DEFAULT USERS'
+# user = User.create!(:name => 'admin', :email => 'admin@cbrc.gov.cn',
+#                     :password => 'password', :password_confirmation => 'password',
+#                     :department_id => 2, :position_id => 5)
+# puts 'New user created: ' << user.name
+# user.add_role "系统管理员"
+
+require 'csv'
+# 处室,职务,姓名,邮箱
+User.delete_all
+default_password = '888888'
+CSV.foreach("db/staff.csv", headers: true) do |row|
+  begin
+    dep_id = Department.where(name: row[0]).first!.id
+    position = row[1].blank? ? Position.last : Position.where(name: row[1]).first!
+    position_id = position.id
+    name, email = row[2], row[3]
+    user = User.create!(name: name, email: email, department_id: dep_id, position_id: position_id,
+                        password: default_password, password_confirmation: default_password)
+    puts 'New User created: ' << user.name
+  rescue Exception => e
+    puts e.message + "dep_id: #{dep_id}, position_id: #{position_id}"
+  end
+
+end
+
+puts "SETTING UP ADMIN USERS" 
+["luowenbo@cbrc.gov.cn", "yuzhiying@cbrc.gov.cn"].each do |email|
+  admin = User.where(email: email).first!
+  admin.add_role "系统管理员"
 end
 
 puts "SETTING UP DEFAULT TRAIN CATEGORIES"

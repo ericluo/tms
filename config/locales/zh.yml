@@ -228,6 +228,9 @@ zh:
         create: 确定
         update: 更新
   activerecord:
+    errors:
+      messages:
+        record_invalid: 记录无效
     models:
       user: 用户
       train: 培训
