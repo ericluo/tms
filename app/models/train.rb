@@ -26,18 +26,7 @@ class Train < ActiveRecord::Base
   scope :unapproved, where(approved: nil)
   scope :approved, where(approved: true)
   scope :rejected, where(approved: false)
-  # attr_accessible :certificate
-  
-  # def score
-  #   root_category = category.root
-  #   case root_category.name
-  #   when "脱产培训" then offjob_score
-  #   when "讲座培训" then 2
-  #   when "在岗培训" then category.scoring_rule.to_i
-  #   when "再培训"   then 10
-  #   else  0
-  #   end
-  # end
+
   def registed_by?(user)
     registrar_id == user.id
   end

@@ -11,7 +11,7 @@
           = link_to "学分登记", new_train_path
         %li
           = link_to "我的登记簿", trains_path(v: :registrar) 
-      - if can? :manage, Train      
+      - if can? :approve, Train      
         %li
           = link_to "学分审验", trains_path(v: :approve)
 

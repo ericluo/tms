@@ -9,11 +9,11 @@ class TrainsController < ApplicationController
     template = "index"
     case params[:v]
     when 'trainee'
-      @trains = @trains.owned_by(current_user).approved
+      @trains = Train.owned_by(current_user).approved
       template = "index_for_trainee"
       add_breadcrumb("我的学分", trains_path(v: 'trainee'))
     when 'registrar'
-      @trains = @trains.registed_by(current_user)
+      @trains = Train.registed_by(current_user)
       template = "index_for_registrar"
       add_breadcrumb("我的登记簿", trains_path(v: 'registrar'))
     when 'approve'
@@ -29,19 +29,6 @@ class TrainsController < ApplicationController
     end
   end
 
-  # def search
-  #   @trains = Train.unapproved
-  # end
-  
-  # def register
-  #   @trains = @trains.where(registrar_id: current_user.id)
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render json: @trains }
-  #     format.csv {send_data Train.to_csv}
-  #     format.xls
-  #   end
-  # end
 
   # GET /trains/1
   # GET /trains/1.json

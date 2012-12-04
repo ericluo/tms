@@ -13,6 +13,7 @@ class Ability
     elsif user.has_role? "审核员"
       can :manage, Train
     elsif user.has_role? "处室管理员"
+      can :create, Train
       can :manage, Train do |train|
         train.registed_by?(user)
       end
