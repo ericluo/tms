@@ -18,7 +18,12 @@ class TrainsController < ApplicationController
       add_breadcrumb("我的登记簿", trains_path(v: 'registrar'))
     when 'approve'
       template = "index_for_approve"
+      @trains = Train.unapproved
       add_breadcrumb('学分审验', trains_path(v: 'approve'))
+    when 'query'
+      template = "index_for_approve"
+      @trains = Train.approved
+      add_breadcrumb('学分查询', trains_path(v: 'query'))
     end
     
     respond_to do |format|

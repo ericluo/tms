@@ -12,7 +12,7 @@ window.dt_options =
     sProcessing: "处理中......"
     sZeroRecords: "没有匹配结果"
     sInfo: "第 _START_ ~ _END_ 条，共 _TOTAL_ 条 "
-    sInfoEmpty: "显示第0至0项结果，共0项"
+    sInfoEmpty: "显示第 0 至 0 项结果，共 0 项"
     sInfoFiltered: "(由 _MAX_ 项结果过滤)"
     oPaginate:
       sFirst:    "首页"

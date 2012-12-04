@@ -33,4 +33,4 @@
   .btn
     = link_to '编辑', edit_train_path(@train)
   .btn  
-    = link_to '返回', trains_path(registrar_id: current_user.id)
+    = link_to '返回', trains_path(v: :registrar)

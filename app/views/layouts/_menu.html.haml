@@ -14,6 +14,7 @@
       - if can? :approve, Train      
         %li
           = link_to "学分审验", trains_path(v: :approve)
+          = link_to "学分查询", trains_path(v: :query)
 
   -if can? :manage, Report    
     .row
