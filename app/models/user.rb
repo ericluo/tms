@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :department
-  has_many   :trains, foreign_key: "trainee_id"
+  has_many   :trains, foreign_key: "trainee_id", dependent: :destroy
   belongs_to :position
 
   has_and_belongs_to_many :roles, join_table: :users_roles
