@@ -22,6 +22,8 @@ gem 'awesome_nested_set'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+gem 'newrelic_rpm'
+
 group :production do
   gem 'mysql2'
 end
