@@ -8,13 +8,13 @@
 
   %tbody      
     - @reports.each do |report|
-      %tr
+      %t
         %td= report.start_date
         %td= report.end_date
         %td= report.category
         %td
           = link_to '下载', report_path(report, request.parameters.merge({format: :xls}))
-          = link_to '删除', report, :confirm => 'Are you sure?', :method => :delete
+          = link_to '删除', report, :confirm => '确定删除报表吗?', :method => :delete
 
 %br
 
