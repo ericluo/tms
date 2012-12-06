@@ -4,6 +4,7 @@ set :user, "eric"
 set :repository,  "https://github.com/ericluo/tms.git"
 set :deploy_to, "/home/eric/workspace/sms"
 
+require "bundler/capistrano"
 require "rvm/capistrano"
 set :rvm_ruby_string, "1.9.3"
 
